@@ -1,10 +1,15 @@
 <script>
+	import NavBar from './Components/NavBar.svelte'
 	export let name;
+
+	const navItems = [{url: '/about', label: 'Unser Ziel'}, {url: '/contact', label: 'Mitmachen'}]
 </script>
 
 <main>
+	<NavBar navItems={navItems}/>
 	<h1>Hello {name}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<div class='flaticon'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 </main>
 
 <style>
@@ -27,4 +32,8 @@
 			max-width: none;
 		}
 	}
+
+	.flaticon{
+        display: none;
+    }
 </style>
