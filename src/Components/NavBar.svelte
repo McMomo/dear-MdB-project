@@ -2,10 +2,18 @@
 <style>
     * {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
     }
 
     /* Add a black background color to the top navigation */
-    .topnav {
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        /*
         position: sticky;
         top: 0;
         z-index: 10;
@@ -13,26 +21,26 @@
         overflow: hidden;
 
         border-bottom: 1px solid black;
+        */
     }
 
-    .menu {
-        padding: 0;
-        margin: 0;
+    .menu li a {
+        display: block;
+        padding: 10px;
     }
 
     /* Style the links inside the navigation bar */
     .item {
-        float: left;
-        display: block;
-        color: black;
+        order: 3;
+        width: 100%;
         text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-        text-transform: uppercase;
-    }
+        display: none;
+        padding: 10px;
 
-    .item a {
+        
+        color: black;
+        font-size: 15px;
+        text-transform: uppercase;
         color: inherit; /* blue colors for links too */
         text-decoration: inherit; /* no underline */
     }
@@ -48,32 +56,41 @@
         font-weight: bolder;
     }
 
+    .active .item {
+        display: block;
+    }
+
     /* Hide the link that should open and close the topnav on small screens */
-    .topnav .toggle {
-        display: none;
+    .toggle {
+        order: 1;
+        font-size: 20px;
+        padding: 10px;
     } 
 
-    @media screen and (max-width: 600px) {
-        .topnav a:not(:first-child) {display: none;}
-        .topnav a.toggle {
-            float: right;
-            display: block;
-        }
-    }   
+    @media screen and (max-width: 959px) {
+        /**mobile view*/
+    }
 
-@media screen and (max-width: 600px) {
-    .topnav.responsive {position: relative;}
-    .topnav.responsive .toggle {
-        position: absolute;
-        right: 0;
-        top: 0;
+    @media all and (min-width: 600px) {
+        /**desktop view*/
+        .menu {
+            align-items: flex-start;     
+            flex-wrap: nowrap;
+            background: none;
+        }
+        .logo {
+            order: 0;
+        }
+        .item {
+            order: 1;
+            position: relative;
+            display: block; 
+            width: auto;
+        }
+        .toggle {
+            display: none;
+        }
     }
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-}
 </style>
 
 <script>
@@ -81,23 +98,36 @@
     export let navItems = [];
     export let logo;
 
-    /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
-    function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
+    function myFunction(){
+        console.debug('Hello World!')
     }
-    } 
+
+    
+    /* Toggle mobile menu */
+    function toggleMenu() {
+        const toggle = document.getElementById("toggle");
+        const menu = document.getElementById("menu");
+        
+        if (menu.classList.contains("active")) {
+            menu.classList.remove("active");
+            
+            // adds the menu (hamburger) icon
+            toggle.innerHTML = "<i class=’fas fa-bars’></i>";
+        } else {
+            menu.classList.add("active");
+            
+            // adds the close (x) icon
+            toggle.innerHTML = "<i class=’fas fa-times’></i>";
+        }
+    }
 </script>
 
-<nav class='topnav' id='myTopnav'>
-    <a class='item logo active' href='/'>{logo}</a>
+<header class='menu' id='menu'>
+    <a class='logo active' href='/'>{logo}</a>
     {#each navItems as item}
         <a class='item' href={item.url}>{item.label}</a>
     {/each}
-    <a href="javascript:void(0);" class="item toggle" on:click={myFunction}>
+    <a href="javascript:void(0);" class="toggle" id='toggle' on:click={toggleMenu}>
         <i class="fa fa-bars"></i>
     </a>
-</nav>
+</header>
