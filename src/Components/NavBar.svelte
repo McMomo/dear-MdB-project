@@ -11,9 +11,9 @@
     .menu {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
-        /*
+        
         position: sticky;
         top: 0;
         z-index: 10;
@@ -21,11 +21,6 @@
         overflow: hidden;
 
         border-bottom: 1px solid black;
-        */
-    }
-
-    .menu li a {
-        display: block;
         padding: 10px;
     }
 
@@ -36,7 +31,6 @@
         text-align: center;
         display: none;
         padding: 10px;
-
         
         color: black;
         font-size: 15px;
@@ -52,20 +46,38 @@
     }
 
     /* Add an active class to highlight the current page */
-    .item.active {
-        font-weight: bolder;
+    .menu.active .item{
+        display: block;
     }
 
-    .active .item {
-        display: block;
+    .logo{
+        height: 2em;
+        
+        margin-right: auto;
+
+        text-align: center;
+        color: black;
+        font-size: 15px;
+        text-transform: uppercase;
+        color: inherit; /* blue colors for links too */
+        text-decoration: inherit; /* no underline */
+    }
+
+    .logo img{
+        height: inherit;
+        padding: 2px;
     }
 
     /* Hide the link that should open and close the topnav on small screens */
     .toggle {
         order: 1;
-        font-size: 20px;
-        padding: 10px;
+        height: 1.5em;
     } 
+
+    .toggle img{
+        height: inherit;
+        padding: 2px;
+    }
 
     @media screen and (max-width: 959px) {
         /**mobile view*/
@@ -97,37 +109,37 @@
     // your script goes here
     export let navItems = [];
     export let logo;
-
-    function myFunction(){
-        console.debug('Hello World!')
-    }
-
     
+    let toggleFlag = true;
+
     /* Toggle mobile menu */
     function toggleMenu() {
-        const toggle = document.getElementById("toggle");
         const menu = document.getElementById("menu");
-        
+
         if (menu.classList.contains("active")) {
             menu.classList.remove("active");
             
-            // adds the menu (hamburger) icon
-            toggle.innerHTML = "<i class=’fas fa-bars’></i>";
+            toggleFlag = false;
         } else {
             menu.classList.add("active");
-            
-            // adds the close (x) icon
-            toggle.innerHTML = "<i class=’fas fa-times’></i>";
+
+            toggleFlag = true;
         }
     }
 </script>
 
-<header class='menu' id='menu'>
-    <a class='logo active' href='/'>{logo}</a>
+<header class='menu active' id='menu'>
+    <a class='logo' href='/'><img src={logo.href} alt={logo.alt} />Dear MdB ..</a>
     {#each navItems as item}
-        <a class='item' href={item.url}>{item.label}</a>
+        <a id='item' class='item' href={item.url}>{item.label}</a>
     {/each}
     <a href="javascript:void(0);" class="toggle" id='toggle' on:click={toggleMenu}>
-        <i class="fa fa-bars"></i>
+        {#if toggleFlag}
+             <!-- content here -->
+             <img src='./Images/menu.svg' alt='open menu' />
+             {:else}
+             <!-- else content here -->
+             <img src='./Images/close.svg' alt='close menu' />
+        {/if}
     </a>
 </header>
