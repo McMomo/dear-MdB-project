@@ -17,7 +17,7 @@
         position: sticky;
         top: 0;
         z-index: 10;
-        background-color: white;
+        background-color: #EDEDED;
         overflow: hidden;
 
         border-bottom: 1px solid black;
@@ -44,7 +44,7 @@
     /* Change the color of links on hover */
     .item:hover {
         background-color: rgb(25, 160, 25);
-        color: white;
+        color: #EDEDED;
     }
 
     /* Add an active class to highlight the current page */
@@ -86,7 +86,7 @@
 
     .toggle:hover{
         background-color: rgb(25, 160, 25);
-        fill: white;
+        fill: #EDEDED;
     }
 
     @media screen and (max-width: 959px) {

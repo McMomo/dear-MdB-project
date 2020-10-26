@@ -35,6 +35,9 @@
 	main {
 		display: grid;
 		grid-template-rows: auto 1fr auto;
+
+		overflow-x: hidden;
+		
 	}
 
 	h1 {
