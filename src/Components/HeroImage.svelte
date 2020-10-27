@@ -4,8 +4,8 @@
         background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)), url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
 
         /* Set a specific height */
-        height: 50vh;
-        width: 100vw;
+        height: 60vh;
+        width: 100%;
 
         /* Position and center the image to scale nicely on all screens */
         background-position: center;
@@ -16,12 +16,24 @@
 
     /* Place text in the middle of the image */
     .hero-text {
+        position: relative;
         text-align: center;
-        position: absolute;
+        color: white;
+        
+        width: 75vw;
         top: 50%;
         left: 50%;
+        
         transform: translate(-50%, -50%);
-        color: white;
+
+        overflow: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .hero-text::-webkit-scrollbar {
+    display: none;
     }
 
 </style>

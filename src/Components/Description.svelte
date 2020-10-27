@@ -3,75 +3,75 @@
     .description{
         display: grid;
         grid-auto-rows: min-content;
+        column-gap: 2em;
         margin: 42px 10%;
 
         width: 100%;
         min-height: 50vh;
         border-radius: 10px;
-
-        background-color: #EDEDED;
-        box-shadow: 6px 6px 14px 0 rgba(0, 0, 0, 0.2),
-        -8px -8px 18px 0 rgba(255, 255, 255, 0.55);
     }
 
     .card {
-        padding: 10px;
-        height: min-content;
+        margin: 0px;
+        height: max-content;
+        width: max-content;
 
-        background-color: #EDEDED;
+        background-color: #e9e9e9;
+        color: #979797;
+
+        border-bottom: none;
+        border-radius: 10px 10px 0  0;
     }
 
-    h3 {
-        margin: 0;
-    }
-
-    .active {
-        border-top: solid  rgb(25, 160, 25) 3px;
-        box-shadow: none !important;
-    }
-
-    .left-card{
-        grid-column: 1;
-        text-align: center;
-        border-radius: 10px 0 0  0;
-
-        box-shadow: inset 6px 6px 14px 0 rgba(255, 255, 255, 0.55),
-        inset -8px -8px 18px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    .right-card{
-        grid-column: 2;
-        text-align: center;
-        border-radius: 0 10px 0  0;
-
-        box-shadow: inset -6px 6px 14px 0 rgba(255, 255, 255, 0.55),
-        inset 8px -8px 18px 0 rgba(0, 0, 0, 0.2);
+    .card:active, .active {
+        background-color:rgb(60, 156, 60);
+        border-color:rgb(60, 156, 60);
+        color: white;
     }
 
     .card-content{
-        grid-column: 1 / 3;
+        grid-column: 1 / 5;
         grid-row: 2;
-        
+
+        background-color: white;        
+
         min-height: inherit;
         padding: 3em;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
+
+        border: solid 0.3px #979797;
+        border-top: solid 3px rgb(60, 156, 60);
     }
 </style>
 
 <script>
-    // your script goes here
-    //https://www.w3schools.com/howto/howto_js_expanding_grid.asp
-    //https://stackoverflow.com/a/27441458
+    export const cards = [{label: 'Petition', headline:'Lorem', text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, sint.'}, {label: 'Persönlicher Brief', headline:'Illum' ,text: 'Illum a quidem saepe suscipit nesciunt mollitia eligendi inventore fuga. Maiores placeat distinctio eveniet ipsum quo dicta vel, molestias quibusdam.'}]
+    
+    export const cardsLen = cards.length + 1;
+
+    const descriptionData = { headline: cards[0].headline, text: cards[0].text}
+    let descriptionText = cards[0].text;
+
+    function updateText(i){
+        descriptionText = cards[i].text;
+    }
+
+    function setActive(){
+        let desc = document.getElementsByClassName("description");
+        let current = desc[0].getElementsByClassName('active');
+        current[0].classList.remove('active');
+        this.classList.add('active');
+    }
 </script>
 
 <section class='description'>
-    <div class='card left-card active'>
-        <h3>Petition</h3>
-    </div>
-    <div class='card right-card'>
-        <h3>Persönlicher Brief</h3>
-    </div>
+    {#each cards as card, i}
+        <button class='card {i == 0? 'active': ''}' on:click={() => updateText(i)} on:click={setActive}>
+            {card.label}
+        </button>
+    {/each}
+
     <div class='card-content'>
-        <p>Medium length description with a few more words here.</p>
+       <p>{descriptionText}</p>
     </div>
 </section>
