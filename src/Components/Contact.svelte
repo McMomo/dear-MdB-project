@@ -4,6 +4,7 @@ import validator from 'validator';
     let selectedOption = '';
     
     // your script goes here
+    //https://www.npmjs.com/package/validator
     function validateForm() {
         var x = document.forms["myForm"]["fname"].value;
         if (x == "") {
@@ -22,21 +23,33 @@ import validator from 'validator';
     <div class='wrapper'>
         <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
             <h2>Du willst helfen? Schreib uns doch:</h2>
+
+            <!-- new Idea: 
+                Wie heißt du? 
+                [   ]
+                nach Eingabe -> Hallo {name}, warum möchtest du uns schreiben?
+                [ Select ]
+                {je nach auswahl verschiedene Abfragen}
+
+                Can use bind:value for that https://svelte.dev/tutorial/text-inputs
+            -->
+
             <label for='reason'>Warum möchtest du uns kontaktieren?</label>
             <!-- svelte-ignore a11y-no-onchange -->
             <select id='reason' on:change={setInputs}>
                 <option value='brief'>Persönlichen Brief schreiben</option>
                 <option value='petition'>Frage zur Petition</option>
                 <option value='other'>Andere Frage</option>
-            </select>
-
-        
+            </select>        
 
             {#if selectedOption == 'brief'}
-                 <!-- content here -->
+                 <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
+                 <label for='wahlkreis'>Dein Wahlkreis:</label>
+                 <input id='whalkreis'/>
             {:else}
                  <!-- else content here -->
             {/if}
+
             <label for='name'>Dein Vor- und Nachname:</label>
             <input id='name'/>
     
@@ -46,6 +59,8 @@ import validator from 'validator';
             <label for='text'>Was möchtest du uns noch sagen?</label>
             <textarea id='text'/>
     
+            <!-- dont forget: https://developers.google.com/recaptcha/intro-->
+
             <button type="submit" value="Submit" >Abschicken</button>
         </form> 
     </div>
