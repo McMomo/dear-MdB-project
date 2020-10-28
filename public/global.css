@@ -36,6 +36,7 @@ label {
 input, button, select, textarea {
 	font-family: inherit;
 	font-size: inherit;
+	font-weight: 300;
 	-webkit-padding: 0.4em 0;
 	padding: 0.4em;
 	margin: 0 0 0.5em 0;
@@ -55,18 +56,18 @@ button {
 	padding: 10px;
 	margin: 0 10px;
 
-	border: solid 0.3px #979797;
-	border-radius: 3px;
+	border: none;
 	
 	font-size: 15px;
 	text-transform: uppercase;
 	text-align: center;
+
+	transition: transform .2s; 
 }
 
 button:hover {
-	background-color: rgb(25, 160, 25);
-	color: white;
-	border-color: rgb(25, 160, 25);
+	transform: scale(1.2);
+	font-weight: 500;
 }
 
 button:disabled {
