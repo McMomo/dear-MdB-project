@@ -1,7 +1,8 @@
 <style>
     /* The hero image */
     .hero-image {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)), url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
+        /*background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)), url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");*/
+        background-color: rgb(60, 156, 60);
 
         /* Set a specific height */
         height: 60vh;
@@ -40,6 +41,7 @@
 
 <script>
     // your script goes here
+    //TODO rename to banner
 </script>
 
 <section class="hero-image">

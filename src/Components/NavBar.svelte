@@ -92,6 +92,9 @@
 </style>
 
 <script>
+
+    //TODO adjust to new HeroImage & still sticky?
+
     // your script goes here
     const navItems = [{url: '/about', label: 'Unser Ziel'}, {url: '/contact', label: 'Mitmachen'}]
 	const logo = { href:'../Images/forest.svg' ,alt:'#dannibleibt'}
