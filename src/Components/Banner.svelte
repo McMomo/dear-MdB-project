@@ -20,11 +20,12 @@
         place-items: center;
 
         /*background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)), url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");*/
-        background-color: rgb(60, 156, 60);
+        /*background-color: rgb(60, 156, 60);*/
+        background-image: linear-gradient(#60b550, #3c9c3c);
 
         height: min-content;
         width: 100vw;
-        padding: 0 0 2.5% 0;
+        padding: 7.5% 0 2.5% 0;
     }
 
     .banner-text {

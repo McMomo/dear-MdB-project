@@ -53,12 +53,12 @@
         justify-content: flex-end;
         align-items: center;
         
-        position: relative;
+        position: absolute;
         width: 100vw;
 
         top: 0;
         z-index: 10;
-        background-color: rgb(60, 156, 60);
+        background-color: transparent;
         overflow: hidden;
 
         padding: 10px 0;

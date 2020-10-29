@@ -1,7 +1,12 @@
 <script>
-import validator from 'validator';
+    import validator from 'validator';
 
+    let name = '';
     let selectedOption = '';
+    let hometown = '';
+    let mail = '';
+    let text = '';
+
     
     // your script goes here
     //https://www.npmjs.com/package/validator
@@ -13,10 +18,6 @@ import validator from 'validator';
             return false;
         }
     } 
-
-    function setInputs(){
-        selectedOption = this.options[this.selectedIndex].value;
-    }
 </script>
 
 <section class='contact'>
@@ -24,44 +25,43 @@ import validator from 'validator';
         <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
-            <!-- new Idea: 
-                Wie heißt du? 
-                [   ]
-                nach Eingabe -> Hallo {name}, warum möchtest du uns schreiben?
-                [ Select ]
-                {je nach auswahl verschiedene Abfragen}
+            <label for='name'>Wie heißt du?</label>
+            <input id='name' bind:value={name} placeholder='Vor- und Nachname'/>
 
-                Can use bind:value for that https://svelte.dev/tutorial/text-inputs
-            -->
-
-            <label for='reason'>Warum möchtest du uns kontaktieren?</label>
-            <!-- svelte-ignore a11y-no-onchange -->
-            <select id='reason' on:change={setInputs}>
-                <option value='brief'>Persönlichen Brief schreiben</option>
-                <option value='petition'>Frage zur Petition</option>
-                <option value='other'>Andere Frage</option>
-            </select>        
-
-            {#if selectedOption == 'brief'}
-                 <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
-                 <label for='wahlkreis'>Dein Wahlkreis:</label>
-                 <input id='whalkreis'/>
-            {:else}
-                 <!-- else content here -->
+            {#if name !== ''}
+                <label for='reason'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
+                <!-- svelte-ignore a11y-no-onchange -->
+                <select id='reason' bind:value={selectedOption}>
+                    <option value='placeholder' disabled selected>Bitte auswählen</option>
+                    <option value='brief'>Persönlichen Brief schreiben</option>
+                    <option value='petition'>Frage zur Petition</option>
+                    <option value='other'>Andere Frage</option>
+                </select>        
             {/if}
+           
 
-            <label for='name'>Dein Vor- und Nachname:</label>
-            <input id='name'/>
-    
-            <label for='mail'>Deine E-Mail-Adresse:</label>
-            <input id='mail'/>
-    
-            <label for='text'>Was möchtest du uns noch sagen?</label>
-            <textarea id='text'/>
-    
-            <!-- dont forget: https://developers.google.com/recaptcha/intro-->
+            {#if selectedOption === 'brief'}
+                 <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
+                 <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
+                 <input id='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
+            {/if}
+            
+            {#if selectedOption === 'brief' && hometown !== ''}
+                <label for='mail'>Deine E-Mail-Adresse:</label>
+                <input id='mail' bind:value={mail}/>
+            {:else if  selectedOption !== '' && selectedOption !== 'brief' && name !== ''}
+                <label for='mail'>Deine E-Mail-Adresse:</label>
+                <input id='mail' bind:value={mail}/>
+            {/if}
+            
+            {#if mail !== ''}
+                <label for='text'>Was möchtest du uns sagen oder fragen?</label>
+                <textarea id='text' bind:value={text}/>
 
-            <button type="submit" value="Submit" >Abschicken</button>
+                <!-- dont forget: https://developers.google.com/recaptcha/intro-->
+    
+                <button type="submit" value="Submit" >Abschicken</button>
+            {/if}
         </form> 
     </div>
 </section>
@@ -107,5 +107,9 @@ import validator from 'validator';
     label, input, select, textarea {
         min-width: inherit;
         width: inherit;
+    }
+
+    option[value="placeholder"][disabled] {
+        display: none;
     }
 </style>
