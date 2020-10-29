@@ -9,6 +9,7 @@
 	<NavBar/>
 
 	<div class='content'>
+		<!-- TODO https://alligator.io/css/scroll-snapping/ looks quite nice-->
 		<Banner/>
 		<Description/>
 		<Contact/>

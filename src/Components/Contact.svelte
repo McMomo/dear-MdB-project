@@ -1,5 +1,8 @@
 <script>
     import validator from 'validator';
+    import { onMount, onDestroy } from 'svelte';
+
+    const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
     let name = '';
     let selectedOption = '';
@@ -7,22 +10,60 @@
     let mail = '';
     let text = '';
 
-    
-    // your script goes here
-    //https://www.npmjs.com/package/validator
+    let reCaptchaFlag = false;
+
     function validateForm() {
-        var x = document.forms["myForm"]["fname"].value;
-        if (x == "") {
-            alert("Name must be filled out");
-            //TODO surround input with red instead
+
+        console.log('validating forms')
+
+        if (!reCaptchaFlag){
+            return false;
+        } else if (!!name){
+            return false;
+        } else if (selectedOption === brief && hometown){
+            return false;
+        } else if (validator.isEmail(mail)){
             return false;
         }
+
+        var x = document.forms["contactForm"]
+
+        return true;
     } 
+
+    function setToken(){
+        reCaptchaFlag = true;
+    }
+
+    function resetToken(){
+        reCaptchaFlag = false;
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    } 
+
+    onMount(() => {
+        topFunction();
+        window.setToken = setToken;
+        window.resetToken = resetToken;
+
+        window.validateForm = validateForm;
+
+    })
+
+    onDestroy(() => {
+        window.setToken = null;
+        window.resetToken = null;
+        
+        window.validateForm = validateForm;
+    })
 </script>
 
 <section class='contact'>
     <div class='wrapper'>
-        <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        <form name="contactForm" action="?" on:submit|preventDefault={validateForm} method="POST">
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>
@@ -48,24 +89,33 @@
             
             {#if selectedOption === 'brief' && hometown !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
-                <input id='mail' bind:value={mail}/>
+                <input id='mail' bind:value={mail} required type="email"/>
             {:else if  selectedOption !== '' && selectedOption !== 'brief' && name !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
-                <input id='mail' bind:value={mail}/>
+                <input id='mail' bind:value={mail} required='' />
             {/if}
             
             {#if mail !== ''}
                 <label for='text'>Was möchtest du uns sagen oder fragen?</label>
                 <textarea id='text' bind:value={text}/>
 
-                <!-- dont forget: https://developers.google.com/recaptcha/intro-->
-    
-                <button type="submit" value="Submit" >Abschicken</button>
+                <!--
+
+                    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
+                    <div class="g-recaptcha" data-sitekey='{dataSitekey}' data-size='compact' data-callback='setToken' data-expired-callback='resetToken'></div>
+                    <input type="submit" value="Abschicken" />
+                -->
+                <script src="https://www.google.com/recaptcha/api.js"></script>                
+                <button class="g-recaptcha"
+                    data-sitekey='{dataSitekey}' 
+                    data-callback='validateForm' 
+                    data-action='submit'>Abschicken</button>
+
+                
             {/if}
         </form> 
     </div>
 </section>
-
 
 <style>
 
@@ -76,10 +126,10 @@
 
     .wrapper {
         display: grid;
-        place-items: center;
-
+        place-items: baseline center;
+        
         margin: 42px 10%;
-        min-height: 30vh;
+        min-height: 37.5vh;
 
         background-color: #ededed;
 
