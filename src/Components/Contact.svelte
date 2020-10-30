@@ -10,34 +10,26 @@
     let mail = '';
     let text = '';
 
-    let reCaptchaFlag = false;
+    function validateForm(token) {
 
-    function validateForm() {
+        console.log('validating')
 
-        console.log('validating forms')
-
-        if (!reCaptchaFlag){
+        if (!token){
+            console.error('failed validation')
             return false;
-        } else if (!!name){
+        } else if (!name){
+            console.error('failed validation')
             return false;
-        } else if (selectedOption === brief && hometown){
+        } else if (selectedOption === 'brief' && !hometown){
+            console.error('failed validation')
             return false;
-        } else if (validator.isEmail(mail)){
+        } else if (!validator.isEmail(mail)){
+            console.error('failed validation')
             return false;
         }
 
-        var x = document.forms["contactForm"]
-
-        return true;
+        document.getElementById('contactForm').submit()
     } 
-
-    function setToken(){
-        reCaptchaFlag = true;
-    }
-
-    function resetToken(){
-        reCaptchaFlag = false;
-    }
 
     function topFunction() {
         document.body.scrollTop = 0; // For Safari
@@ -46,33 +38,27 @@
 
     onMount(() => {
         topFunction();
-        window.setToken = setToken;
-        window.resetToken = resetToken;
-
         window.validateForm = validateForm;
 
     })
 
-    onDestroy(() => {
-        window.setToken = null;
-        window.resetToken = null;
-        
+    onDestroy(() => {        
         window.validateForm = validateForm;
     })
 </script>
 
 <section class='contact'>
     <div class='wrapper'>
-        <form name="contactForm" action="?" on:submit|preventDefault={validateForm} method="POST">
+        <form id="contactForm" action="../contact-form-process.php" on:submit|preventDefault={validateForm} method="POST">
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>
-            <input id='name' bind:value={name} placeholder='Vor- und Nachname'/>
+            <input id='name' name='name' bind:value={name} placeholder='Vor- und Nachname'/>
 
             {#if name !== ''}
                 <label for='reason'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
                 <!-- svelte-ignore a11y-no-onchange -->
-                <select id='reason' bind:value={selectedOption}>
+                <select id='reason' name='reason' bind:value={selectedOption}>
                     <option value='placeholder' disabled selected>Bitte auswählen</option>
                     <option value='brief'>Persönlichen Brief schreiben</option>
                     <option value='petition'>Frage zur Petition</option>
@@ -84,33 +70,34 @@
             {#if selectedOption === 'brief'}
                  <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
                  <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
-                 <input id='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
+                 <input id='hometown' name='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
             {/if}
             
             {#if selectedOption === 'brief' && hometown !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
-                <input id='mail' bind:value={mail} required type="email"/>
+                <input id='mail' name='mail' bind:value={mail} required type="email"/>
             {:else if  selectedOption !== '' && selectedOption !== 'brief' && name !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
-                <input id='mail' bind:value={mail} required='' />
+                <input id='mail' name='mail' bind:value={mail} required='' />
             {/if}
             
             {#if mail !== ''}
                 <label for='text'>Was möchtest du uns sagen oder fragen?</label>
-                <textarea id='text' bind:value={text}/>
+                <textarea id='text' name='text' bind:value={text}/>
 
                 <!--
 
                     <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
                     <div class="g-recaptcha" data-sitekey='{dataSitekey}' data-size='compact' data-callback='setToken' data-expired-callback='resetToken'></div>
-                    <input type="submit" value="Abschicken" />
-                -->
-                <script src="https://www.google.com/recaptcha/api.js"></script>                
-                <button class="g-recaptcha"
+                    <script src="https://www.google.com/recaptcha/api.js"></script>                
+                    <button class="g-recaptcha"
                     data-sitekey='{dataSitekey}' 
                     data-callback='validateForm' 
-                    data-action='submit'>Abschicken</button>
-
+                    data-action='submit'
+                    >Abschicken</button>
+                -->
+                
+                <input type="submit" value="Abschicken" />
                 
             {/if}
         </form> 
