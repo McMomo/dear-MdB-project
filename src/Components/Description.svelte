@@ -28,7 +28,7 @@
     }
 </script>
 
-<section class='description'>
+<section class='description' id='about'>
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}

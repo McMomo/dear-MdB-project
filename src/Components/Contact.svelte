@@ -28,7 +28,13 @@
             return false;
         }
 
-        document.getElementById('contactForm').submit()
+        let contact = document.getElementById('contactForm')
+        
+        //if (window.location.href.includes('localhost')){
+        //    contact.action = 'http://localhost:80/contact-form-process.php'
+        //}
+
+        contact.submit()
     } 
 
     function topFunction() {
@@ -47,9 +53,9 @@
     })
 </script>
 
-<section class='contact'>
+<section class='contact' id='contact'>
     <div class='wrapper'>
-        <form id="contactForm" action="../contact-form-process.php" on:submit|preventDefault={validateForm} method="POST">
+        <form id="contactForm" action='mailto:{selectedOption == 'brief'? 'brief': 'info'}@stoppa49.org?subject=Anfrage - {selectedOption}&body={selectedOption == 'brief'? 'Wohnort: '+ hometown + '\n' : ''}Nachricht: {text}' method='get' enctype="text/plain" on:submit|preventDefault={validateForm}>
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>

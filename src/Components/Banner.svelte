@@ -1,6 +1,14 @@
 <script>
+
+    const buttonTarget = 'contact';
+
     // your script goes here
-    //TODO rename to banner
+    function scrollToSection(target){
+        const tragetElement = document.getElementById(target);
+        if (!!tragetElement){
+            tragetElement.scrollIntoView({behavior: "smooth"});
+        }
+    }
 </script>
 
 <section class="banner">
@@ -10,7 +18,7 @@
             <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
         </p>
     
-        <button>Jetzt mitmachen!</button>
+        <button on:click={() => scrollToSection(buttonTarget)}>Jetzt mitmachen!</button>
     </div>
 </section> 
 
@@ -19,13 +27,10 @@
         display: grid;
         place-items: center;
 
-        /*background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75)), url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");*/
-        /*background-color: rgb(60, 156, 60);*/
-        background-image: linear-gradient(#60b550, #3c9c3c);
-
-        height: min-content;
         width: 100vw;
+        height: min-content;
         padding: 7.5% 0 2.5% 0;
+        background-image: linear-gradient(#60b550, #3c9c3c);
     }
 
     .banner-text {
@@ -48,6 +53,6 @@
     button {
         font-size: 1.5em;
         color: white;
-        background-color: inherit;
+        background-color: transparent;
     }
 </style>

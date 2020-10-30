@@ -1,19 +1,29 @@
 <script>
     // your script goes here
-    const navItems = [{url: '/about', label: 'Unser Ziel'}, {url: '/contact', label: 'Mitmachen'}]
+    const navItems = [{target: 'about', label: 'Unser Ziel'}, {target: 'contact', label: 'Mitmachen'}]
 	const logo = { href:'../Images/013-tree.svg' ,alt:'#dannibleibt'}
     
     let toggleFlag = true;
+
+    // Initial call because need to set the class
+    toggleMenu()
+
+    function scrollToSection(target){
+        const tragetElement = document.getElementById(target);
+        if (!!tragetElement){
+            tragetElement.scrollIntoView({behavior: "smooth"});
+        }
+    }
 
     /* Toggle mobile menu */
     function toggleMenu() {
         const menu = document.getElementById("menu");
 
-        if (menu.classList.contains("active")) {
+        if (menu && menu.classList.contains("active")) {
             menu.classList.remove("active");
             
             toggleFlag = false;
-        } else {
+        } else if (menu){
             menu.classList.add("active");
 
             toggleFlag = true;
@@ -24,23 +34,20 @@
     //https://linguinecode.com/post/create-a-navbar-in-svelte
 
     //https://www.w3schools.com/howto/howto_js_scroll_indicator.asp
-
-    //scrollnavigation
-    //element.scrollIntoView(true)
 </script>
 
 <header class='menu active' id='menu'>
     <a class='logo' href='/'><img src={logo.href} alt={logo.alt} /></a>
     {#each navItems as item}
-        <button class='item' href={item.url}>{item.label}</button>
+        <button class='item' on:click={() => scrollToSection(item.target)}>{item.label}</button>
     {/each}
     <button class="toggle" on:click={toggleMenu}>
         {#if toggleFlag}
              <!-- content here -->
-             <img src='./Images/menu.svg' alt='open menu' />
+             <img src='./Images/close.svg' alt='close menu' />
              {:else}
              <!-- else content here -->
-             <img src='./Images/close.svg' alt='close menu' />
+             <img src='./Images/menu.svg' alt='open menu' />
         {/if}
     </button>
 </header>
@@ -58,7 +65,7 @@
 
         top: 0;
         z-index: 10;
-        background-color: transparent;
+        background-color: #60b550;
         overflow: hidden;
 
         padding: 10px 0;
@@ -69,6 +76,8 @@
         order: 3;
         width: 100%;
         display: none;
+        background-color: #3c9c3c;
+        margin: 0;
     }
 
     /* Add an active class to highlight the current page */
@@ -78,16 +87,7 @@
 
     .logo{
         height: 2.5em;
-        
-        margin-left: 10px;
-        margin-right: auto;
-
-        text-align: center;
-        color: black;
-        font-size: 15px;
-        text-transform: uppercase;
-        color: inherit; /* blue colors for links too */
-        text-decoration: inherit; /* no underline */
+        margin: 0 auto 10px 10px;
     }
 
     .logo img{
@@ -105,7 +105,7 @@
         padding: 10px;
         margin-right: 10px;
 
-        background-color: inherit;
+        background-color: #3c9c3c;
         border: none;
     }
 
@@ -123,6 +123,7 @@
         /**desktop view*/
         .menu {
             flex-wrap: nowrap;
+            background-color: transparent;
         }
         .logo {
             order: 0;
@@ -132,6 +133,9 @@
             position: relative;
             display: block; 
             width: auto;
+            
+            margin-right: 2em;
+            background-color: transparent;
         }
         .toggle {
             display: none;
