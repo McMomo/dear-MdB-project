@@ -1,23 +1,12 @@
 <script>
-    export const cards = [
-        {
-            label: 'Persönlicher Brief', 
-            headline:'Illum' ,
-            text: 'Illum a quidem saepe suscipit nesciunt mollitia eligendi inventore fuga. Maiores placeat distinctio eveniet ipsum quo dicta vel, molestias quibusdam.', 
-            href:'../Images/021-letter-3.svg'
-        },
-        {
-            label: 'Petition', 
-            headline:'Lorem', 
-            text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, sint.', 
-            href:'../Images/015-petition.svg'
-        },
-        ]
+    export let cards = [];
 
     let descriptionData = cards[0];
 
     function updateText(i){
         descriptionData = cards[i];
+
+        scrollToButton(i)
     }
 
     function setActive(){
@@ -26,26 +15,36 @@
         current[0].classList.remove('active');
         this.classList.add('active');
     }
+
+    function scrollToButton(target){
+        const tragetElement = document.getElementById(target);
+        if (!!tragetElement){
+            tragetElement.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start' });
+        }
+    }
 </script>
 
 <section class='description' id='about'>
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}
-            <button class='card {i == 0? 'active': ''}' on:click={() => updateText(i)} on:click={setActive}>
+            <button class='card {i == 0? 'active': ''}' id={i} on:click={() => updateText(i)} on:click={setActive}>
                 {card.label}
             </button>
             {/each}
         </div>
     
         <div class='card-content'>
-            <img src={descriptionData.href} alt='Text matching Icon'/>
+            <img src={descriptionData.href} alt={descriptionData.alt}/>
             <div>
                 <h2>{descriptionData.headline}</h2>
                 <p>{descriptionData.text}</p>
             </div>
         </div>
     </div>
+    <p>
+        <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+    </p>
 </section>
 
 <style>
@@ -68,8 +67,7 @@
     }
 
     .card {
-        margin: 0px;
-        margin-right: 10px;
+        margin: auto 10px 0 0;
         height: max-content;
         width: max-content;
 
@@ -94,6 +92,17 @@
         font-weight: 300;
     }
 
+    .card-row{
+        display: flex;
+        overflow-x: scroll;
+
+        scrollbar-width: none;
+    }
+
+    .card-row::-webkit-scrollbar {
+        width: 0;
+    }
+
     .card-content{
         background-color: white;        
 
@@ -115,7 +124,32 @@
         width: 5em;
     }
 
+    p span{
+        position: absolute;
+
+        right: 0;
+        bottom: 0;
+
+        margin: 1em;
+        color: white;
+
+        font-size: 10pt;
+    }
+
     @media screen and (max-width: 600px) {
         /**TODO mobile view for .card-content*/
+        .card-content{
+            grid-template-columns: 100%;
+
+            padding: 1em;
+        }
+
+        .card-content img {
+           opacity: 0.3;
+           z-index: 0;
+           position: absolute;
+           justify-content: center;
+    }
+
     }
 </style>

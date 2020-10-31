@@ -1,7 +1,7 @@
 <script>
     // your script goes here
-    const navItems = [{target: 'about', label: 'Unser Ziel'}, {target: 'contact', label: 'Mitmachen'}]
-	const logo = { href:'../Images/013-tree.svg' ,alt:'#dannibleibt'}
+    export let navItems = []
+	export let logo = { href:'' ,alt:'logo'}
     
     let toggleFlag = true;
 

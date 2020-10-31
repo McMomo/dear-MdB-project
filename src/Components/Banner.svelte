@@ -1,6 +1,9 @@
 <script>
+    export let bannerHeadline = '';
+    export let bannerText = '';
 
-    const buttonTarget = 'contact';
+    export let bannerButtonTarget = '';
+    export let bannerButtonText = '';
 
     // your script goes here
     function scrollToSection(target){
@@ -13,12 +16,10 @@
 
 <section class="banner">
     <div class="banner-text">
-        <h1>Stoppt die A49, stoppt die Rodung der Wälder</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ipsa, quia sunt dolore eveniet blanditiis iusto eos veniam at illum quas quisquam, reiciendis distinctio, dolores iure adipisci deleniti repellendus accusantium?
-            <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-        </p>
+        <h1>{bannerHeadline}</h1>
+        <p>{bannerText}</p>
     
-        <button on:click={() => scrollToSection(buttonTarget)}>Jetzt mitmachen!</button>
+        <button on:click={() => scrollToSection(bannerButtonTarget)}>{bannerButtonText}</button>
     </div>
 </section> 
 
@@ -31,6 +32,7 @@
         height: min-content;
         padding: 7.5% 0 2.5% 0;
         background-image: linear-gradient(#60b550, #3c9c3c);
+        margin: 0;
     }
 
     .banner-text {
@@ -54,5 +56,12 @@
         font-size: 1.5em;
         color: white;
         background-color: transparent;
+    }
+
+    @media screen and (max-width: 600px) {
+        /**TODO mobile view for .card-content*/
+        .banner{
+            padding-top: calc(7.5% + 2em);
+        }
     }
 </style>

@@ -3,15 +3,17 @@
 	import Banner from './Components/Banner.svelte'
 	import Description from './Components/Description.svelte'
 	import Contact from './Components/Contact.svelte'
+
+	import {navBarData, bannerData, descriptionData} from './Data.js'
 </script>
 
 <main>
-	<NavBar/>
+	<NavBar {...navBarData}/>
 
 	<div class='content'>
 		<!-- TODO https://alligator.io/css/scroll-snapping/ looks quite nice-->
-		<Banner/>
-		<Description/>
+		<Banner {...bannerData}/>
+		<Description {...descriptionData}/>
 		<Contact/>
 	</div>
 	
@@ -24,13 +26,6 @@
 		grid-template-rows: auto 1fr auto;
 
 		overflow-x: hidden;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {

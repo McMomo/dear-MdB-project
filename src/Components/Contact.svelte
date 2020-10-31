@@ -30,9 +30,9 @@
 
         let contact = document.getElementById('contactForm')
         
-        //if (window.location.href.includes('localhost')){
-        //    contact.action = 'http://localhost:80/contact-form-process.php'
-        //}
+        if (window.location.href.includes('localhost')){
+           contact.action = 'http://localhost:80/contact-form-process.php'
+        }
 
         contact.submit()
     } 
@@ -55,7 +55,8 @@
 
 <section class='contact' id='contact'>
     <div class='wrapper'>
-        <form id="contactForm" action='mailto:{selectedOption == 'brief'? 'brief': 'info'}@stoppa49.org?subject=Anfrage - {selectedOption}&body={selectedOption == 'brief'? 'Wohnort: '+ hometown + '\n' : ''}Nachricht: {text}' method='get' enctype="text/plain" on:submit|preventDefault={validateForm}>
+        <form id="contactForm" action='contact-form-process.php' on:submit|preventDefault method='POST'>
+        <!-- 'mailto:{selectedOption == 'brief'? 'brief': 'info'}@stoppa49.org?subject=Anfrage - {selectedOption}&body={selectedOption == 'brief'? 'Wohnort: '+ hometown + '\n' : ''}Nachricht: {text}' method='get' enctype="text/plain"-->
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>
@@ -67,7 +68,7 @@
                 <select id='reason' name='reason' bind:value={selectedOption}>
                     <option value='placeholder' disabled selected>Bitte auswählen</option>
                     <option value='brief'>Persönlichen Brief schreiben</option>
-                    <option value='petition'>Frage zur Petition</option>
+                    <option value='petition'>Verteiler für die Petition</option>
                     <option value='other'>Andere Frage</option>
                 </select>        
             {/if}
@@ -91,19 +92,13 @@
                 <label for='text'>Was möchtest du uns sagen oder fragen?</label>
                 <textarea id='text' name='text' bind:value={text}/>
 
-                <!--
-
-                    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
-                    <div class="g-recaptcha" data-sitekey='{dataSitekey}' data-size='compact' data-callback='setToken' data-expired-callback='resetToken'></div>
-                    <script src="https://www.google.com/recaptcha/api.js"></script>                
-                    <button class="g-recaptcha"
-                    data-sitekey='{dataSitekey}' 
-                    data-callback='validateForm' 
-                    data-action='submit'
-                    >Abschicken</button>
-                -->
+                <script src="https://www.google.com/recaptcha/api.js"></script>                
+                <button class="g-recaptcha"
+                data-sitekey='{dataSitekey}' 
+                data-callback='validateForm' 
+                data-action='submit'
+                >Abschicken</button>
                 
-                <input type="submit" value="Abschicken" />
                 
             {/if}
         </form> 
