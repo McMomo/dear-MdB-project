@@ -3,6 +3,8 @@
 	import Banner from './Components/Banner.svelte'
 	import Description from './Components/Description.svelte'
 	import Contact from './Components/Contact.svelte'
+	import Footer from './Components/Footer.svelte'
+
 
 	import {navBarData, bannerData, descriptionData} from './Data.js'
 </script>
@@ -11,13 +13,12 @@
 	<NavBar {...navBarData}/>
 
 	<div class='content'>
-		<!-- TODO https://alligator.io/css/scroll-snapping/ looks quite nice-->
 		<Banner {...bannerData}/>
 		<Description {...descriptionData}/>
 		<Contact/>
 	</div>
 	
-	<div class='flaticon'>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+	<Footer/>
 </main>
 
 <style>
@@ -42,8 +43,4 @@
 
 		width: 100vw;
 	}
-
-	.flaticon{
-        display: none;
-    }
 </style>

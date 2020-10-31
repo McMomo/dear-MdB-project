@@ -136,7 +136,7 @@
     }
 
     @media screen and (max-width: 200px) {
-        /**TODO mobile view for .card-content*/
+        /**mobile view for .card-content*/
         form{
             min-width: 100vw;
         }

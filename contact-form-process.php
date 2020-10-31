@@ -9,7 +9,14 @@
             $hometown = $_POST['hometown'];
     }
 
-    $email_to = ($reason == "brief"? "brief@stoppa49.org": ($reason == "petition"? "petition@stoppa49.org" : "info@stoppa49.org"));
+    if ($reason == "brief"){
+        $email_to = "brief@stoppa49.org";
+    } else if ($reason == "petition"){
+        $email_to = "petition@stoppa49.org";
+    } else {
+        $email_to = "info@stoppa49.org"; 
+    }
+
     $email_subject = $reason . " - Anfrage von Website";
 
     $email_message = "Es folgen die Nutzereingaben.\n\n";

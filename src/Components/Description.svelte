@@ -38,7 +38,7 @@
             <img src={descriptionData.href} alt={descriptionData.alt}/>
             <div>
                 <h2>{descriptionData.headline}</h2>
-                <p>{descriptionData.text}</p>
+                <p>{@html descriptionData.text}</p>
             </div>
         </div>
     </div>
@@ -54,8 +54,8 @@
         min-height: 75vh;
         
         background-image: url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
+        background-position: top;
+        background-repeat: space;
         background-size: cover;
         position: relative;
     }
@@ -82,8 +82,8 @@
     }
     
     .active {
-        background-color:rgb(60, 156, 60);
-        border-color:rgb(60, 156, 60);
+        background-color:#3c9c3c;
+        border-color:#3c9c3c;
         color: white;
     }
 
@@ -105,23 +105,27 @@
 
     .card-content{
         background-color: white;        
-
-        min-height: inherit;
+        
+        max-height: 75vh;
         padding: 3em;
         overflow-y: scroll;
 
         border: solid 0.3px #979797;
-        border-top: solid 3px rgb(60, 156, 60);
+        border-top: solid 3px #3c9c3c;
 
         display: grid;
         place-items: center;
 
         grid-gap: 1rem;
-        grid-template-columns:  minmax(100px, 15%) 50%;
+        grid-template-columns:  minmax(100px, 15%) 50vw;
     }
 
     .card-content img {
         width: 5em;
+    }
+
+    .card-content h2, .card-content p{
+        width: 50vw;
     }
 
     p span{
@@ -137,10 +141,9 @@
     }
 
     @media screen and (max-width: 600px) {
-        /**TODO mobile view for .card-content*/
+        /**mobile view for .card-content*/
         .card-content{
             grid-template-columns: 100%;
-
             padding: 1em;
         }
 
@@ -148,7 +151,9 @@
            opacity: 0.3;
            z-index: 0;
            position: absolute;
-           justify-content: center;
+           /* justify-content: center; */
+           top: calc(50% - 2.5em);
+           left: calc(50% - 2.5em);
     }
 
     }

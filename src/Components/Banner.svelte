@@ -30,7 +30,7 @@
 
         width: 100vw;
         height: min-content;
-        padding: 7.5% 0 2.5% 0;
+        padding: 5% 0 2.5% 0;
         background-image: linear-gradient(#60b550, #3c9c3c);
         margin: 0;
     }
@@ -47,6 +47,10 @@
         scrollbar-width: none;  /* Firefox */
     }
 
+    .banner-text p{
+        text-align: justify;
+    }
+
     /* Hide scrollbar for Chrome, Safari and Opera */
     .banner-text::-webkit-scrollbar {
     display: none;
@@ -59,9 +63,9 @@
     }
 
     @media screen and (max-width: 600px) {
-        /**TODO mobile view for .card-content*/
+        /**mobile view for .card-content*/
         .banner{
-            padding-top: calc(7.5% + 2em);
+            padding-top: calc(5% + 3em);
         }
     }
 </style>

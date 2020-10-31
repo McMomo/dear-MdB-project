@@ -1,7 +1,7 @@
 <script>
     // your script goes here
     export let navItems = []
-	export let logo = { href:'' ,alt:'logo'}
+	export let logo = { href:'' ,alt:''}
     
     let toggleFlag = true;
 
