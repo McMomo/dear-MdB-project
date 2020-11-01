@@ -6,7 +6,7 @@
 	import Footer from './Components/Footer.svelte'
 
 
-	import {navBarData, bannerData, descriptionData} from './Data.js'
+	import {navBarData, bannerData, descriptionData, footerData} from './Data.js'
 </script>
 
 <main>
@@ -18,7 +18,7 @@
 		<Contact/>
 	</div>
 	
-	<Footer/>
+	<Footer {...footerData}/>
 </main>
 
 <style>
