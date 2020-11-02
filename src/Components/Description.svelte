@@ -28,18 +28,39 @@
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}
-            <button class='card {i == 0? 'active': ''}' id={i} on:click={() => updateText(i)} on:click={setActive}>
+            <button class='card {i === 0? 'active': ''}' id={i} on:click={() => updateText(i)} on:click={setActive}>
                 {card.label}
             </button>
             {/each}
         </div>
     
-        <div class='card-content'>
-            <img src={descriptionData.href} alt={descriptionData.alt}/>
-            <div>
-                <h2>{descriptionData.headline}</h2>
-                <p>{@html descriptionData.text}</p>
-            </div>
+        <div class='card-content {!!descriptionData.table? 'table': ''}'>
+            {#if !!descriptionData.table}
+            <h2>{descriptionData.headline}</h2>
+                <div>
+                    <table>
+                        {#each descriptionData.table as row,i}
+                        <tr>
+                            {#if i === 0}
+                                {#each row as col}
+                                    <th>{@html col}</th>
+                                {/each}
+                            {:else}
+                                {#each row as col}
+                                    <th>{@html col}</th>
+                                {/each}
+                            {/if}
+                        </tr>
+                        {/each}
+                    </table>
+                </div>
+            {:else}
+                 <img src={descriptionData.href} alt={descriptionData.alt}/>
+                 <div>
+                     <h2>{descriptionData.headline}</h2>
+                     <p>{@html descriptionData.text}</p>
+                </div>
+            {/if}
         </div>
     </div>
     <p>
@@ -124,9 +145,10 @@
         width: 5em;
     }
 
-    .card-content h2, .card-content p{
-        width: 50vw;
+    .card-content h2{
+        text-align: center;
     }
+
 
     p span{
         position: absolute;
@@ -138,6 +160,23 @@
         color: white;
 
         font-size: 10pt;
+    }
+
+    .card-content.table{
+        grid-template-columns: 100%;
+        padding: 1em;
+    }
+
+    table {
+        width: 100%
+    }
+
+    table h2{
+        text-align: center;
+    }
+
+    table img{
+        width: 50%;
     }
 
     @media screen and (max-width: 600px) {

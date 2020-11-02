@@ -62,6 +62,24 @@ export const descriptionData = {
             href:'../Images/002-road.svg',
             alt:'Icon street in forest'
         },
+        {
+            label: 'Vergleich A49 & P2',
+            headline: 'Vergleich von Durchbau der A49 zum Planfall 2 (P2) für Stadtallendorf',
+            type: 'table',
+            table: [
+                    [
+                        '<h3>Durchbau: A49</h3><p>(30 km Autobahn von Treysa bis Anschlussstelle A5 zu bauen)</p>', 
+                        '<h3>Kompromiss : P2</h3><p>(9 km Bundesstraße von Treysa bis Stadtallendorf zu bauen)</p>'], 
+                    [
+                        '<td><img src="../Images/auswirkung_A49_Karte.jpg" alt="Auswirkung A49 als Karte" style="width:100%;"/></td>',
+                        '<td><img src="../Images/auswirkung_P2_Karte.jpg" alt="Auswirkung P2 als Karte" style="width:100%;"/></td>'
+                    ],
+                    [
+
+                    ],
+                ],
+        
+        }
     ]
 }
 
