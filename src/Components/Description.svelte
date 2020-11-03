@@ -1,4 +1,7 @@
 <script>
+import { element } from "svelte/internal";
+
+
     export let cards = [];
 
     let descriptionData = cards[0];
@@ -37,23 +40,27 @@
         <div class='card-content {!!descriptionData.table? 'table': ''}'>
             {#if !!descriptionData.table}
             <h2>{descriptionData.headline}</h2>
-                <div>
-                    <table>
-                        {#each descriptionData.table as row,i}
-                        <tr>
-                            {#if i === 0}
-                                {#each row as col}
-                                    <th>{@html col}</th>
+                <div class='card-table'>
+                    {#each descriptionData.table as field, i}
+                    <div class="table-box">
+                        <p>
+                        <strong>{@html field.headline}</strong><br/>
+                            {#if field.text}
+                                    {@html field.text}
+                            {:else if field.list}
+                            <ul>
+                                {#each field.list as li}
+                                        <li>{@html li}</li>
                                 {/each}
-                            {:else}
-                                {#each row as col}
-                                    <th>{@html col}</th>
-                                {/each}
+                            </ul>
                             {/if}
-                        </tr>
-                        {/each}
-                    </table>
+                        </p>
+                    </div>
+                    {/each}
                 </div>
+            {#if !!descriptionData.text}
+                <p class="table-text">{@html descriptionData.text}</p>
+            {/if}
             {:else}
                  <img src={descriptionData.href} alt={descriptionData.alt}/>
                  <div>
@@ -149,6 +156,33 @@
         text-align: center;
     }
 
+    .card-content.table{
+        grid-template-columns: 100%;
+        padding: 1em;
+    }
+
+    .card-table {
+        display: grid;
+        grid-template-columns: 45% 45%;
+        grid-gap: 5px;
+        background-color: #fff;
+        color: #444;
+
+        justify-content: center;
+        text-align: left;
+    }
+
+    .table-box {
+        background-color: #3c9c3c;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .table-text {
+        padding: 10px 5%;
+        padding-bottom: 30px;
+    }
 
     p span{
         position: absolute;
@@ -160,23 +194,6 @@
         color: white;
 
         font-size: 10pt;
-    }
-
-    .card-content.table{
-        grid-template-columns: 100%;
-        padding: 1em;
-    }
-
-    table {
-        width: 100%
-    }
-
-    table h2{
-        text-align: center;
-    }
-
-    table img{
-        width: 50%;
     }
 
     @media screen and (max-width: 600px) {
