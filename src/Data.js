@@ -57,7 +57,8 @@ export const descriptionData = {
                 und Stadtallendorf gebaut werden. Dieser Kompromiss steht deshalb nicht im Widerspruch
                 zur infrastrukturellen Anbindung der Region oder wirtschaftlichen Interessen!
                 <br/>
-                <img src='../Images/1B_Karte.jpg' alt='Karte von Planfall 2' style='width:100%;'/>
+                
+                <img class="dataImg" src='../Images/1B_Karte.jpg' alt='Karte von Planfall 2' style='width:100%;'/>
             `, 
             href:'../Images/002-road.svg',
             alt:'Icon street in forest'
@@ -78,11 +79,11 @@ export const descriptionData = {
 
                         {
                             headline: 'Auswirkungen der A49:',
-                            text: '<img src="../Images/auswirkung_A49_Karte.jpg" alt="Auswirkung A49 als Karte" style="width:100%;"/>'
+                            text: '<img class="dataImg" src="../Images/auswirkung_A49_Karte.jpg" alt="Auswirkung A49 als Karte" style="width:100%;"/>'
                         },
                         {
                             headline: 'Auswirkungen von P2:',
-                            text: '<img src="../Images/auswirkung_P2_Karte.jpg" alt="Auswirkung P2 als Karte" style="width:100%;"/>'
+                            text: '<img class="dataImg" src="../Images/auswirkung_P2_Karte.jpg" alt="Auswirkung P2 als Karte" style="width:100%;"/>'
                         },
                         
                         {
@@ -129,7 +130,7 @@ export const descriptionData = {
                         {
                             headline: 'Belastung:',
                             list: [
-                                'bis zu 72 % mehr Verkehr in Stadtallendorf<br/><img src="../Images/belastung_a49_karte.jpg" style="width: 100%;"/><br/>hr / Quelle DEGES'
+                                'bis zu 72 % mehr Verkehr in Stadtallendorf<br/><img class="dataImg" src="../Images/belastung_a49_karte.jpg" style="width: 100%;"/><br/>hr / Quelle DEGES'
                             ]
                         },
                                                 {
@@ -223,7 +224,7 @@ export const descriptionData = {
 
 export const footerData = {
         footerLinks : [
-            {href: 'https://github.com/McMomo/dear-MdB-project/releases', title: 'GitHub', content: '<img src="../Images/github.svg" alt="GitHub" style="height: 1em;"/>'}, 
+            {href: 'https://github.com/McMomo/dear-MdB-project/releases', title: 'GitHub', content: '<img class="githubIcon" src="../Images/github.svg" alt="GitHub" style="height: 1em;"/>'}, 
             {href: '../imprint.html', content: 'Impressum', title: 'Impressum'}, 
             {href: '../source.html', content: 'Quellen', title: 'Quellen'}, 
         ]

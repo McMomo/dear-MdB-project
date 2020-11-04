@@ -1,5 +1,5 @@
 <script>
-import { element } from "svelte/internal";
+import { afterUpdate, onMount } from "svelte";
 
 
     export let cards = [];
@@ -8,8 +8,7 @@ import { element } from "svelte/internal";
 
     function updateText(i){
         descriptionData = cards[i];
-
-        scrollToButton(i)
+        scrollToButton(i);
     }
 
     function setActive(){
@@ -25,6 +24,39 @@ import { element } from "svelte/internal";
             tragetElement.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start' });
         }
     }
+
+    function openModal(e){
+        // Get the modal
+        const modal = document.getElementById("myModal");
+
+        const img = e.target;
+        const modalImg = document.getElementById("img01");
+        const captionText = document.getElementById("caption");
+        
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        captionText.innerHTML = img.alt;
+
+    }
+
+    function closeModal() {
+        const modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }    
+
+    function updateImages(){
+        const images = document.getElementsByClassName('dataImg');
+        for (const key in images){
+            if (typeof images[key] === 'object') {
+                images[key].onclick = openModal;
+                console.log(images[key])
+            }
+        }
+    }
+
+    afterUpdate(() => {
+        updateImages();
+    })
 </script>
 
 <section class='description' id='about'>
@@ -73,10 +105,22 @@ import { element } from "svelte/internal";
     <p>
         <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     </p>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close" on:click={closeModal}>&times;</span>
+    
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" alt='Fullscreen' id="img01">
+    
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
 </section>
 
 <style>
-    /* your styles go here */
     .description{
         width: 100vw;
         min-height: 75vh;
@@ -157,16 +201,15 @@ import { element } from "svelte/internal";
     }
 
     .card-content.table{
-        grid-template-columns: 100%;
+        display: block;
         padding: 1em;
     }
 
     .card-table {
         display: grid;
-        grid-template-columns: 45% 45%;
-        grid-gap: 5px;
+        grid-template-columns: 50% 50%;
+        grid-gap: 1px;
         background-color: #fff;
-        color: #444;
 
         justify-content: center;
         text-align: left;
@@ -175,8 +218,14 @@ import { element } from "svelte/internal";
     .table-box {
         background-color: #3c9c3c;
         color: #fff;
-        border-radius: 5px;
+        border-radius: 2px;
         padding: 10px;
+
+        overflow-wrap: break-word;
+    }
+
+    .table-box ul {
+        padding-left: 1em;
     }
 
     .table-text {
@@ -210,7 +259,87 @@ import { element } from "svelte/internal";
            /* justify-content: center; */
            top: calc(50% - 2.5em);
            left: calc(50% - 2.5em);
+        }    
+
+        .card-content.table{
+            padding: 0.5em;
+        }
+
+        .table-box {
+            padding: 5px;
+        }
     }
 
-    }
+
+    /*TEST Modal Image*/
+    /* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
 </style>
