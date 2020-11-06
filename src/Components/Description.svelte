@@ -69,7 +69,7 @@ import { afterUpdate, onMount } from "svelte";
             {/each}
         </div>
     
-        <div class='card-content {!!descriptionData.table? 'table': ''}'>
+        <div class='card-content {descriptionData.type ?? ''}'>
             {#if !!descriptionData.table}
             <h2>{descriptionData.headline}</h2>
                 <div class='card-table'>
@@ -94,7 +94,9 @@ import { afterUpdate, onMount } from "svelte";
                 <p class="table-text">{@html descriptionData.text}</p>
             {/if}
             {:else}
-                 <img src={descriptionData.href} alt={descriptionData.alt}/>
+                {#if !!descriptionData.href}
+                    <img src={descriptionData.href} alt={descriptionData.alt}/>
+                {/if}
                  <div>
                      <h2>{descriptionData.headline}</h2>
                      <p>{@html descriptionData.text}</p>
@@ -134,7 +136,7 @@ import { afterUpdate, onMount } from "svelte";
 
     .card-wrapper{
         display: grid;
-        margin: 42px 10%;
+        margin: 5% 10%;
         min-height: 30vh;
     }
 
@@ -202,7 +204,12 @@ import { afterUpdate, onMount } from "svelte";
 
     .card-content.table{
         display: block;
-        padding: 1em;
+        padding: 2em;
+    }
+
+    .card-content.single{
+        display: block;
+        padding: 3em;
     }
 
     .card-table {
@@ -251,6 +258,10 @@ import { afterUpdate, onMount } from "svelte";
             grid-template-columns: 100%;
             padding: 1em;
         }
+
+        .card-wrapper{
+        margin: 5%;
+    }
 
         .card-content img {
            opacity: 0.3;

@@ -6,7 +6,7 @@
 	import Footer from './Components/Footer.svelte'
 
 
-	import {navBarData, bannerData, descriptionData, footerData} from './Data.js'
+	import {navBarData, bannerData, descriptionData, footerData} from '../public/Data.js'
 </script>
 
 <main>
