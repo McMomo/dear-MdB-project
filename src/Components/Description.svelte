@@ -276,8 +276,17 @@ import { afterUpdate, onMount } from "svelte";
             padding: 0.5em;
         }
 
+        .card-content.single{
+           padding: 1em;
+        }       
+
         .table-box {
             padding: 5px;
+        }
+
+        p span{
+        margin: 0.5em;
+        font-size: 8pt;
         }
     }
 
