@@ -17,6 +17,9 @@
         width: 100%;
         height: 3rem;
 
+        bottom: 0;
+        right: 0;
+
         background-color: #60b550;
         background-image: linear-gradient(#3c9c3c, #60b550);
     }
@@ -31,7 +34,7 @@
     }
 
     a {
-        padding: 10px;
+        margin: 10px 15px;
         color: white;
         text-transform: uppercase;
         font-weight: 300;
