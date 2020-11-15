@@ -4,8 +4,11 @@
 
     const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
+    const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief schreiben' },
+    {value: 'petition',label: 'Verteiler für die Petition' }, {value: 'other', label: 'Anderer Grund'}];
+
     let name = '';
-    let selectedOption = '';
+    let selectedOptions = [];
     let hometown = '';
     let mail = '';
     let text = '';
@@ -20,7 +23,7 @@
         } else if (!name){
             console.error('failed validation')
             return false;
-        } else if (selectedOption === 'brief' && !hometown){
+        } else if (selectedOptions === 'brief' && !hometown){
             console.error('failed validation')
             return false;
         } else if (!validator.isEmail(mail)){
@@ -56,34 +59,36 @@
 <section class='contact' id='contact'>
     <div class='wrapper'>
         <form id="contactForm" action='contact-form-process.php' on:submit|preventDefault method='POST'>
-        <!-- 'mailto:{selectedOption == 'brief'? 'brief': 'info'}@stoppa49.org?subject=Anfrage - {selectedOption}&body={selectedOption == 'brief'? 'Wohnort: '+ hometown + '\n' : ''}Nachricht: {text}' method='get' enctype="text/plain"-->
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>
             <input id='name' name='name' bind:value={name} placeholder='Vor- und Nachname'/>
 
             {#if name !== ''}
-                <label for='reason'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
-                <!-- svelte-ignore a11y-no-onchange -->
-                <select id='reason' name='reason' bind:value={selectedOption}>
-                    <option value='placeholder' disabled selected>Bitte auswählen</option>
-                    <option value='brief'>Persönlichen Brief schreiben</option>
-                    <option value='petition'>Verteiler für die Petition</option>
-                    <option value='other'>Andere Frage</option>
-                </select>        
+                <p>Hallo, {name}! Warum möchtest du uns kontaktieren?</p>
+                {#each selectableOptions as opt}
+                    <label>
+                        <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
+                            {opt.label}
+                    </label>
+                {/each}
+            
             {/if}
            
+            <!--TODO change     $reason = $_POST['reason']; // required
+                in php Script & remove different mail recipients
+            -->
 
-            {#if selectedOption === 'brief'}
+            {#if selectedOptions.includes('brief')}
                  <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
                  <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
                  <input id='hometown' name='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
             {/if}
             
-            {#if selectedOption === 'brief' && hometown !== ''}
+            {#if selectedOptions.includes('brief') && hometown !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required type="email"/>
-            {:else if  selectedOption !== '' && selectedOption !== 'brief' && name !== ''}
+            {:else if  (selectedOptions.includes('other') || selectedOptions.includes('petition') ) && name !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required='' />
             {/if}
@@ -142,12 +147,13 @@
         }
     }
 
-    label, input, select, textarea {
+    p, label, input, textarea {
         min-width: inherit;
         width: inherit;
     }
 
-    option[value="placeholder"][disabled] {
-        display: none;
+    input[type=checkbox]{
+        min-width: unset;
+        width: auto;
     }
 </style>
