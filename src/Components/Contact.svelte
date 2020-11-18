@@ -4,7 +4,7 @@
 
     const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
-    const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief schreiben' },
+    const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief' },
     {value: 'petition',label: 'Verteiler für die Petition' }, {value: 'other', label: 'Anderer Grund'}];
 
     let name = '';
@@ -65,13 +65,15 @@
             <input id='name' name='name' bind:value={name} placeholder='Vor- und Nachname'/>
 
             {#if name !== ''}
-                <p>Hallo, {name}! Warum möchtest du uns kontaktieren?</p>
-                {#each selectableOptions as opt}
-                    <label>
-                        <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
+                <label for='checkboxes'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
+                <div id='checkboxes' class="contactCheckbox">    
+                    {#each selectableOptions as opt}
+                        <label>
+                            <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
                             {opt.label}
-                    </label>
-                {/each}
+                        </label>
+                    {/each}
+                </div>
             
             {/if}
            
@@ -101,10 +103,9 @@
                 <button class="g-recaptcha"
                 data-sitekey='{dataSitekey}' 
                 data-callback='validateForm' 
-                data-action='submit'
-                >Abschicken</button>
-                
-                
+                data-action='submit'>
+                    Abschicken
+                </button>
             {/if}
         </form> 
     </div>
@@ -147,13 +148,34 @@
         }
     }
 
-    p, label, input, textarea {
+    label, input, textarea {
         min-width: inherit;
         width: inherit;
     }
 
-    input[type=checkbox]{
+    .contactCheckbox {
+        display: grid;
+        grid-gap: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        margin-bottom: 0.5rem;
+    }
+
+    .contactCheckbox label{
+        padding: 7.5px;
+        
+        font-weight: 300;
+        
+        background-color: white;
+        color: black;
+        
+        box-sizing: border-box;
+        border: solid 0.3px #ccc;
+        border-radius: 1px;
+    }
+
+    .contactCheckbox input{
         min-width: unset;
         width: auto;
+        margin: 0;
     }
 </style>
