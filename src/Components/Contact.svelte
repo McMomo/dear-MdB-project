@@ -4,8 +4,11 @@
 
     const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
+    const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief' },
+    {value: 'petition',label: 'Verteiler für die Petition' }, {value: 'other', label: 'Anderer Grund'}];
+
     let name = '';
-    let selectedOption = '';
+    let selectedOptions = [];
     let hometown = '';
     let mail = '';
     let text = '';
@@ -20,7 +23,7 @@
         } else if (!name){
             console.error('failed validation')
             return false;
-        } else if (selectedOption === 'brief' && !hometown){
+        } else if (selectedOptions.includes('brief') && !hometown){
             console.error('failed validation')
             return false;
         } else if (!validator.isEmail(mail)){
@@ -56,34 +59,34 @@
 <section class='contact' id='contact'>
     <div class='wrapper'>
         <form id="contactForm" action='contact-form-process.php' on:submit|preventDefault method='POST'>
-        <!-- 'mailto:{selectedOption == 'brief'? 'brief': 'info'}@stoppa49.org?subject=Anfrage - {selectedOption}&body={selectedOption == 'brief'? 'Wohnort: '+ hometown + '\n' : ''}Nachricht: {text}' method='get' enctype="text/plain"-->
             <h2>Du willst helfen? Schreib uns doch:</h2>
 
             <label for='name'>Wie heißt du?</label>
             <input id='name' name='name' bind:value={name} placeholder='Vor- und Nachname'/>
 
             {#if name !== ''}
-                <label for='reason'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
-                <!-- svelte-ignore a11y-no-onchange -->
-                <select id='reason' name='reason' bind:value={selectedOption}>
-                    <option value='placeholder' disabled selected>Bitte auswählen</option>
-                    <option value='brief'>Persönlichen Brief schreiben</option>
-                    <option value='petition'>Verteiler für die Petition</option>
-                    <option value='other'>Andere Frage</option>
-                </select>        
+                <label for='checkboxes'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
+                <div id='checkboxes' class="contactCheckbox">    
+                    {#each selectableOptions as opt}
+                        <label>
+                            <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
+                            {opt.label}
+                        </label>
+                    {/each}
+                </div>
+            
             {/if}
-           
 
-            {#if selectedOption === 'brief'}
+            {#if selectedOptions.includes('brief')}
                  <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
                  <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
                  <input id='hometown' name='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
             {/if}
             
-            {#if selectedOption === 'brief' && hometown !== ''}
+            {#if selectedOptions.includes('brief') && hometown !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required type="email"/>
-            {:else if  selectedOption !== '' && selectedOption !== 'brief' && name !== ''}
+            {:else if  (selectedOptions.includes('other') || selectedOptions.includes('petition') ) && name !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required='' />
             {/if}
@@ -96,10 +99,9 @@
                 <button class="g-recaptcha"
                 data-sitekey='{dataSitekey}' 
                 data-callback='validateForm' 
-                data-action='submit'
-                >Abschicken</button>
-                
-                
+                data-action='submit'>
+                    Abschicken
+                </button>
             {/if}
         </form> 
     </div>
@@ -142,12 +144,34 @@
         }
     }
 
-    label, input, select, textarea {
+    label, input, textarea {
         min-width: inherit;
         width: inherit;
     }
 
-    option[value="placeholder"][disabled] {
-        display: none;
+    .contactCheckbox {
+        display: grid;
+        grid-gap: 0.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin-bottom: 0.5rem;
+    }
+
+    .contactCheckbox label{
+        padding: 7.5px;
+        
+        font-weight: 300;
+        
+        background-color: white;
+        color: black;
+        
+        box-sizing: border-box;
+        border: solid 0.3px #ccc;
+        border-radius: 1px;
+    }
+
+    .contactCheckbox input{
+        min-width: unset;
+        width: auto;
+        margin: 0;
     }
 </style>
