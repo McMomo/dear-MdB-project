@@ -14,9 +14,6 @@
     let text = '';
 
     function validateForm(token) {
-
-        console.log('validating')
-
         if (!token){
             console.error('failed validation')
             return false;

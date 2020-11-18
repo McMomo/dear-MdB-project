@@ -1,5 +1,6 @@
 <script>
 import { afterUpdate, onMount } from "svelte";
+import Collapsible from "./Collapsible.svelte";
 
 
     export let cards = [];
@@ -49,7 +50,6 @@ import { afterUpdate, onMount } from "svelte";
         for (const key in images){
             if (typeof images[key] === 'object') {
                 images[key].onclick = openModal;
-                console.log(images[key])
             }
         }
     }
@@ -102,6 +102,7 @@ import { afterUpdate, onMount } from "svelte";
                      <p>{@html descriptionData.text}</p>
                 </div>
             {/if}
+            <Collapsible headline="test 123" content="123" />
         </div>
     </div>
     <p>
