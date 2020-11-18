@@ -1,23 +1,25 @@
 <?php
    
+   //Check for subject
+   $possibleReasons = array('brief', 'petition', 'other');
+   $subject = array();
+   foreach ($possibleReasons as $reason){
+       if (isset($_POST[$reason])){
+           array_push($subject,$_POST[$reason]);
+        }
+    }
+    
     $name = $_POST['name']; // required
-    $reason = $_POST['reason']; // required
     $email = $_POST['mail']; // required
     $text = $_POST['text']; // required
     
-    if ($reason == 'brief'){
+    if (in_array('brief', $subject)){
             $hometown = $_POST['hometown'];
     }
 
-    if ($reason == "brief"){
-        $email_to = "brief@stoppa49.org";
-    } else if ($reason == "petition"){
-        $email_to = "petition@stoppa49.org";
-    } else {
-        $email_to = "info@stoppa49.org"; 
-    }
+    $email_to = "brief@stoppa49.org"; //default mail for all User Kontakt
 
-    $email_subject = $reason . " - Anfrage von Website";
+    $email_subject = join(" - ", $subject) . " - Anfrage von Website";
 
     $email_message = "Es folgen die Nutzereingaben.\n\n";
 
@@ -29,8 +31,7 @@
 
     $email_message .= "Name: " . clean_string($name) . "\n";
     $email_message .= "Email: " . clean_string($email) . "\n";
-    $email_message .= "Grund: " . clean_string($reason) . "\n";
-    if ($reason == 'brief'){
+    if (in_array('brief', $subject)){
         $email_message .= "Wohnort: " . clean_string($hometown) . "\n";
     }
     $email_message .= "Nachricht: " . clean_string($text) . "\n";
@@ -117,7 +118,7 @@ img:hover{
             <h2>
                 Danke für dein Interesse. Leider ist beim versenden der Email ein Fehler aufgetreten.
             </h2>
-            <p>Bitte versuche es noch einmal oder schreibe uns eine Mail unter <a href="@mailto:info@stoppa49.org" title="Alternativer Kontakt">info@stoppa49.org</a>. <br/>Über den Pfeil oben kommst du zurück auf unsere Seite.</p>
+            <p>Bitte versuche es noch einmal oder schreibe uns eine Mail unter <a href="mailto:brief@stoppa49.org" title="Alternativer Kontakt">brief@stoppa49.org</a>. <br/>Über den Pfeil oben kommst du zurück auf unsere Seite.</p>
         <?php endif; ?>
 
         <h2>#dannibleibt</h2>

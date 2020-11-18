@@ -156,7 +156,7 @@
     .contactCheckbox {
         display: grid;
         grid-gap: 0.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         margin-bottom: 0.5rem;
     }
 
