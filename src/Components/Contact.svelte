@@ -23,7 +23,7 @@
         } else if (!name){
             console.error('failed validation')
             return false;
-        } else if (selectedOptions === 'brief' && !hometown){
+        } else if (selectedOptions.includes('brief') && !hometown){
             console.error('failed validation')
             return false;
         } else if (!validator.isEmail(mail)){
@@ -76,10 +76,6 @@
                 </div>
             
             {/if}
-           
-            <!--TODO change     $reason = $_POST['reason']; // required
-                in php Script & remove different mail recipients
-            -->
 
             {#if selectedOptions.includes('brief')}
                  <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
