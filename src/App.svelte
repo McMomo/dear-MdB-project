@@ -5,8 +5,11 @@
 	import Contact from './Components/Contact.svelte'
 	import Footer from './Components/Footer.svelte'
 
+	import * as navBarData from '../public/Data/NavBar.json'
+	import * as bannerData from '../public/Data/Banner.json'
+	import * as descriptionData from '../public/Data/Description.json'
+	import * as footerData from '../public/Data/Footer.json'
 
-	import {navBarData, bannerData, descriptionData, footerData} from '../public/Data.js'
 </script>
 
 <main>

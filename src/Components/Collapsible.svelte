@@ -66,21 +66,21 @@
         color: inherit;
     }
 
-    .collapsibleButton:after {
+    .collapsibleButton::after {
         content: '\02795'; /* Unicode character for "plus" sign (+) */
         font-size: 13px;
-        color: white;
         float: right;
         margin-left: 5px;
     }
 
-    .active {
+    .active, .active:hover {
         background-color: #3c9c3c;
         color: white;
     }
 
-    .active:after {
+    .active::after {
         content: "\2796"; /* Unicode character for "minus" sign (-) */
+        color: white;
     }
 
     /* Style the collapsible content. Note: hidden by default */
