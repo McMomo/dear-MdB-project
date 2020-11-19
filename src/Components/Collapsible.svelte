@@ -2,13 +2,13 @@
     // your script goes here
     export let content;
     export let headline; 
+    export let active = false;
 
+    if (active){
+        toggleCollapsible();
+    }
 
-    function toggleCollapsible(event){
-        const button = event.target;
-        console.debug(button)
-        button.classList.toggle("active")
-
+    function toggleCollapsible(){
         const content = this.nextElementSibling;
         if (content.style.maxHeight){
             content.style.maxHeight = null;
@@ -17,12 +17,16 @@
         } 
     }
 
+    function toggleActive(){
+        active = !active;
+    }
+
 </script>
 
 <div class="collapsible">
-    <button class="collapsibleButton" on:click={toggleCollapsible}>{headline}</button>
+    <button class="collapsibleButton" class:active on:click={toggleCollapsible} on:click={toggleActive}>{headline}</button>
     <div class="collapsibleContent">
-        <p>{@html content}</p>
+        {@html content}
     </div> 
 </div>
 
@@ -57,8 +61,26 @@
     }
 
     /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-    .active, .collapsibleButton:hover {
+    .collapsibleButton:hover {
         background-color: #ccc;
+        color: inherit;
+    }
+
+    .collapsibleButton:after {
+        content: '\02795'; /* Unicode character for "plus" sign (+) */
+        font-size: 13px;
+        color: white;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active {
+        background-color: #3c9c3c;
+        color: white;
+    }
+
+    .active:after {
+        content: "\2796"; /* Unicode character for "minus" sign (-) */
     }
 
     /* Style the collapsible content. Note: hidden by default */

@@ -1,15 +1,16 @@
 <script>
-import { afterUpdate, onMount } from "svelte";
+import { afterUpdate } from "svelte";
 import Collapsible from "./Collapsible.svelte";
+import Table from "./Table.svelte";
+import Modal, { addEventToImages } from "./Modal.svelte"
 
 
     export let cards = [];
 
     let descriptionData = cards[0];
 
-    function updateText(i){
-        descriptionData = cards[i];
-        scrollToButton(i);
+    function updateText(event){
+        descriptionData = cards[event.target.id];
     }
 
     function setActive(){
@@ -19,43 +20,14 @@ import Collapsible from "./Collapsible.svelte";
         this.classList.add('active');
     }
 
-    function scrollToButton(target){
-        const tragetElement = document.getElementById(target);
-        if (!!tragetElement){
-            tragetElement.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start' });
-        }
-    }
-
-    function openModal(e){
-        // Get the modal
-        const modal = document.getElementById("myModal");
-
-        const img = e.target;
-        const modalImg = document.getElementById("img01");
-        const captionText = document.getElementById("caption");
-        
-        modal.style.display = "block";
-        modalImg.src = img.src;
-        captionText.innerHTML = img.alt;
-
-    }
-
-    function closeModal() {
-        const modal = document.getElementById("myModal");
-        modal.style.display = "none";
-    }    
-
-    function updateImages(){
-        const images = document.getElementsByClassName('dataImg');
-        for (const key in images){
-            if (typeof images[key] === 'object') {
-                images[key].onclick = openModal;
-            }
+    function scrollToButton(event){
+        if (!!event.target){
+            event.target.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start' });
         }
     }
 
     afterUpdate(() => {
-        updateImages();
+        addEventToImages('dataImg');
     })
 </script>
 
@@ -63,64 +35,45 @@ import Collapsible from "./Collapsible.svelte";
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}
-            <button class='card {i === 0? 'active': ''}' id={i} on:click={() => updateText(i)} on:click={setActive}>
+            <button class='card {i === 0? 'active': ''}' id={i} on:click={updateText} on:click={scrollToButton} on:click={setActive}>
                 {card.label}
             </button>
             {/each}
         </div>
     
         <div class='card-content {descriptionData.type ?? ''}'>
-            {#if !!descriptionData.table}
-            <h2>{descriptionData.headline}</h2>
-                <div class='card-table'>
-                    {#each descriptionData.table as field, i}
-                    <div class="table-box">
-                        <p>
-                        <strong>{@html field.headline}</strong><br/>
-                            {#if field.text}
-                                    {@html field.text}
-                            {:else if field.list}
-                            <ul>
-                                {#each field.list as li}
-                                        <li>{@html li}</li>
-                                {/each}
-                            </ul>
-                            {/if}
-                        </p>
-                    </div>
-                    {/each}
-                </div>
-            {#if !!descriptionData.text}
-                <p class="table-text">{@html descriptionData.text}</p>
+            
+            {#if descriptionData.href}
+            <img src={descriptionData.href} alt={descriptionData.alt}/>
             {/if}
-            {:else}
-                {#if !!descriptionData.href}
-                    <img src={descriptionData.href} alt={descriptionData.alt}/>
+            
+            <div>
+                <h2>{descriptionData.headline}</h2>
+                {#if descriptionData.textTop}
+                    <p>
+                        {@html descriptionData.textTop}
+                    </p>
                 {/if}
-                 <div>
-                     <h2>{descriptionData.headline}</h2>
-                     <p>{@html descriptionData.text}</p>
-                </div>
-            {/if}
-            <Collapsible headline="test 123" content="123" />
+                {#if descriptionData.table}
+                    <Table content={descriptionData.table} />
+                {:else if  !!descriptionData.collapsibles}
+                    {#each descriptionData.collapsibles as col}
+                        <Collapsible headline={col.headline} content={col.content} />
+                    {/each}
+                {/if}
+                {#if descriptionData.text}
+                    <p class='{descriptionData.table? "table-text": ""}'>
+                        {@html descriptionData.text}
+                    </p>
+                {/if}
+            </div>
         </div>
     </div>
     <p>
         <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     </p>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- The Close Button -->
-        <span class="close" on:click={closeModal}>&times;</span>
-    
-        <!-- Modal Content (The Image) -->
-        <img class="modal-content" alt='Fullscreen' id="img01">
-    
-        <!-- Modal Caption (Image Text) -->
-        <div id="caption"></div>
-    </div>
+    <Modal/>
 </section>
 
 <style>
@@ -213,29 +166,6 @@ import Collapsible from "./Collapsible.svelte";
         padding: 3em;
     }
 
-    .card-table {
-        display: grid;
-        grid-template-columns: 50% 50%;
-        grid-gap: 1px;
-        background-color: #fff;
-
-        justify-content: center;
-        text-align: left;
-    }
-
-    .table-box {
-        background-color: #3c9c3c;
-        color: #fff;
-        border-radius: 2px;
-        padding: 10px;
-
-        overflow-wrap: break-word;
-    }
-
-    .table-box ul {
-        padding-left: 1em;
-    }
-
     .table-text {
         padding: 10px 5%;
         padding-bottom: 30px;
@@ -261,8 +191,8 @@ import Collapsible from "./Collapsible.svelte";
         }
 
         .card-wrapper{
-        margin: 5%;
-    }
+            margin: 5%;
+        }
 
         .card-content img {
            opacity: 0.3;
@@ -290,77 +220,4 @@ import Collapsible from "./Collapsible.svelte";
         font-size: 8pt;
         }
     }
-
-
-    /*TEST Modal Image*/
-    /* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-}
-
-/* Modal Content (Image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-
-/* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-
-/* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-@keyframes zoom {
-  from {transform:scale(0)}
-  to {transform:scale(1)}
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.close:hover,
-.close:focus {
-  color: #bbb;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
-  .modal-content {
-    width: 100%;
-  }
-}
 </style>
