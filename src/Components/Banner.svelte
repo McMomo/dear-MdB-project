@@ -55,7 +55,7 @@
     .banner-text::-webkit-scrollbar {
     display: none;
     }
-
+    
     button {
         font-size: 1.5em;
         color: white;

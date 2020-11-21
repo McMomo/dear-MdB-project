@@ -32,6 +32,13 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 </script>
 
 <section class='description' id='about'>
+    <img class="card-image" src="../Images/melanie-hauke-ezsOp-DEjWI-unsplash-300.jpeg" 
+                    srcset="../Images/melanie-hauke-ezsOp-DEjWI-unsplash-300.jpeg 300w, 
+                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-500.jpeg 500w,
+                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-750.jpeg 750w,
+                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-1000.jpeg 1000w,
+                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-2000.jpeg 2000w" 
+                    alt="Look into trees from the ground"/>
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}
@@ -72,8 +79,8 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     <p>
         <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
     </p>
-
     <Modal/>
+
 </section>
 
 <style>
@@ -81,10 +88,10 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         width: 100vw;
         min-height: 75vh;
         
-        background-image: url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
+        /* background-image: url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
         background-position: top;
         background-repeat: space;
-        background-size: cover;
+        background-size: cover; */
         position: relative;
     }
 
@@ -181,6 +188,14 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         color: white;
 
         font-size: 10pt;
+    }
+
+    .card-image {
+        position: absolute;
+        z-index: -1;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
     }
 
     @media screen and (max-width: 600px) {
