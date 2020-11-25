@@ -132,10 +132,11 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         overflow-x: scroll;
 
         scrollbar-width: none;
+        -ms-overflow-style: none;  /* IE and Edge */
     }
 
     .card-row::-webkit-scrollbar {
-        width: 0;
+        display: none; /* Chrome and Safari */
     }
 
     .card-content{
