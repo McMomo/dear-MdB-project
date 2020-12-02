@@ -3,7 +3,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import json from '@rollup/plugin-json'
+import json from '@rollup/plugin-json';
+import babel from '@rollup/plugin-babel'
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -71,7 +72,12 @@ export default {
 		production && terser(),
 
 		
-		json({compact: true,})
+		json({compact: true,}),
+
+		babel({
+			extensions: ['.js', '.mjs', '.html', '.svelte'],
+			include: ['src/**', 'node_modules/svelte/**'],
+		  }),
 
 	],
 	watch: {

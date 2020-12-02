@@ -86,12 +86,8 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 <style>
     .description{
         width: 100vw;
-        min-height: 75vh;
-        
-        /* background-image: url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
-        background-position: top;
-        background-repeat: space;
-        background-size: cover; */
+        min-height: min-content;
+
         position: relative;
     }
 
