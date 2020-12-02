@@ -87,11 +87,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     .description{
         width: 100vw;
         min-height: 75vh;
-        
-        /* background-image: url("../Images/melanie-hauke-ezsOp-DEjWI-unsplash.jpg");
-        background-position: top;
-        background-repeat: space;
-        background-size: cover; */
+
         position: relative;
     }
 
@@ -114,6 +110,8 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 
         transition: none;
         transform: none;
+
+        outline: none;
     }
     
     .active {
