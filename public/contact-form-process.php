@@ -1,5 +1,5 @@
 <?php
-   
+
    //Check for subject
    $possibleReasons = array('brief', 'petition', 'other');
    $subject = array();
@@ -8,11 +8,11 @@
            array_push($subject,$_POST[$reason]);
         }
     }
-    
+
     $name = $_POST['name']; // required
     $email_user = $_POST['mail']; // required
     $text = $_POST['text']; // required
-    
+
     if (in_array('brief', $subject)){
             $hometown = $_POST['hometown'];
     }
@@ -73,7 +73,7 @@
 body {
 
     display: grid;
-    
+
 
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
@@ -117,7 +117,7 @@ img:hover{
         <?php if($response) : ?>
             <h1>Die E-Mail wurde erfolgreich versendet!</h1>
             <h2>
-                Danke für dein Interesse. Wir werden in Kürze mit dir Kontakt aufnehmen.
+                Danke für dein Interesse. Falls dich keine Bestätigungsmail erreicht schreibe uns doch einfach eine E-Mail an <a href="mailto:brief@stoppa49.org" title="Alternativer Kontakt">brief@stoppa49.org</a> mit deinem Anliegen.
             </h2>
             <p>
                 Wir brauchen auch noch viele weitere Briefschreiber*innen. Am besten aus ganz Deutschland, um einen direkten Bezug zu den Abgeordneten herzustellen.
@@ -136,9 +136,9 @@ img:hover{
 
         <h2>#dannibleibt</h2>
     </div>
- 
+
 </body>
-</html> 
+</html>
 
 
 <?php
