@@ -2,7 +2,7 @@
     // your script goes here
     export let navItems = []
 	export let logo = { href:'' ,alt:''}
-    
+
     let toggleFlag = true;
 
     // Initial call because need to set the class
@@ -21,7 +21,7 @@
 
         if (menu && menu.classList.contains("active")) {
             menu.classList.remove("active");
-            
+
             toggleFlag = false;
         } else if (menu){
             menu.classList.add("active");
@@ -50,12 +50,12 @@
         flex-wrap: nowrap;
         justify-content: flex-end;
         align-items: center;
-        
-        position: absolute;
+
+        position: relative;
         width: 100vw;
 
         top: 0;
-        background-color: transparent;
+        background-color: #60b550;
         overflow: hidden;
 
         padding: 10px 0;
@@ -64,11 +64,11 @@
     /* Style the links inside the navigation bar */
     .item {
         position: relative;
-        display: block; 
-        
+        display: block;
+
         background-color: transparent;
         width: auto;
-        
+
         margin: 0;
         margin-right: 2em;
     }

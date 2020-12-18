@@ -1,4 +1,6 @@
 <script>
+    import Sharing from './Sharing.svelte'
+
     export let bannerHeadline = '';
     export let bannerText = '';
 
@@ -18,10 +20,12 @@
     <div class="banner-text">
         <h1>{bannerHeadline}</h1>
         <p>{bannerText}</p>
-    
-        <button on:click={() => scrollToSection(bannerButtonTarget)}>{bannerButtonText}</button>
     </div>
-</section> 
+
+    <Sharing/>
+
+    <button on:click={() => scrollToSection(bannerButtonTarget)}>{bannerButtonText}</button>
+</section>
 
 <style>
     .banner {
@@ -30,7 +34,7 @@
 
         width: 100vw;
         height: min-content;
-        padding: 5% 0 2.5% 0;
+        padding-bottom: 2.5%;
         background-image: linear-gradient(#60b550, #3c9c3c);
         margin: 0;
     }
@@ -39,9 +43,9 @@
         position: relative;
         text-align: center;
         color: white;
-        
+
         width: 75vw;
-        
+
         overflow: scroll;
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
@@ -55,7 +59,7 @@
     .banner-text::-webkit-scrollbar {
     display: none;
     }
-    
+
     button {
         font-size: 1.5em;
         color: white;

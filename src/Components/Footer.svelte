@@ -6,7 +6,11 @@
 <section class="footer">
     <div class="footer-links">
         {#each footerLinks as link}
+            {#if link.content.includes('<i')}
+             <a href={link.href} title={link.title} target="_blank" rel="noopener noreferrer">{@html link.content}</a>
+            {:else}
              <a href={link.href} title={link.title}>{@html link.content}</a>
+            {/if}
         {/each}
     </div>
 </section>

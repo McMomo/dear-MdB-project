@@ -9,7 +9,7 @@ const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
 	let server;
-	
+
 	function toExit() {
 		if (server) server.kill(0);
 	}
@@ -70,7 +70,6 @@ export default {
 		// instead of npm run dev), minify
 		production && terser(),
 
-		
 		json({compact: true,})
 
 	],
