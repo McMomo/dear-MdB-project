@@ -5,7 +5,7 @@
     const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
     const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief' },
-    {value: 'petition',label: 'Verteiler für die Petition' }, {value: 'other', label: 'Anderer Grund'}];
+    {value: 'other', label: 'Anderer Grund'}];
 
     let name = '';
     let selectedOptions = [];
@@ -29,18 +29,18 @@
         }
 
         let contact = document.getElementById('contactForm')
-        
+
         if (window.location.href.includes('localhost')){
            contact.action = 'http://localhost:80/contact-form-process.php'
         }
 
         contact.submit()
-    } 
+    }
 
     function topFunction() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    } 
+    }
 
     onMount(() => {
         topFunction();
@@ -48,7 +48,7 @@
 
     })
 
-    onDestroy(() => {        
+    onDestroy(() => {
         window.validateForm = validateForm;
     })
 </script>
@@ -63,7 +63,7 @@
 
             {#if name !== ''}
                 <label for='checkboxes'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
-                <div id='checkboxes' class="contactCheckbox">    
+                <div id='checkboxes' class="contactCheckbox">
                     {#each selectableOptions as opt}
                         <label>
                             <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
@@ -71,7 +71,7 @@
                         </label>
                     {/each}
                 </div>
-            
+
             {/if}
 
             {#if selectedOptions.includes('brief')}
@@ -79,7 +79,7 @@
                  <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
                  <input id='hometown' name='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
             {/if}
-            
+
             {#if selectedOptions.includes('brief') && hometown !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required type="email"/>
@@ -87,20 +87,20 @@
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required='' />
             {/if}
-            
+
             {#if mail !== ''}
                 <label for='text'>Was möchtest du uns sagen oder fragen?</label>
                 <textarea id='text' name='text' bind:value={text}/>
 
-                <script src="https://www.google.com/recaptcha/api.js"></script>                
+                <script src="https://www.google.com/recaptcha/api.js"></script>
                 <button class="g-recaptcha"
-                data-sitekey='{dataSitekey}' 
-                data-callback='validateForm' 
+                data-sitekey='{dataSitekey}'
+                data-callback='validateForm'
                 data-action='submit'>
                     Abschicken
                 </button>
             {/if}
-        </form> 
+        </form>
     </div>
 </section>
 
@@ -114,7 +114,7 @@
     .wrapper {
         display: grid;
         place-items: baseline center;
-        
+
         margin: 42px 10%;
         min-height: 37.5vh;
 
@@ -155,12 +155,12 @@
 
     .contactCheckbox label{
         padding: 7.5px;
-        
+
         font-weight: 300;
-        
+
         background-color: white;
         color: black;
-        
+
         box-sizing: border-box;
         border: solid 0.3px #ccc;
         border-radius: 1px;
