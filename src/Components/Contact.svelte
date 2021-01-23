@@ -108,7 +108,7 @@
 
     .contact {
         width: 100vw;
-        min-height: 75vh;
+        min-height: min-content;
     }
 
     .wrapper {

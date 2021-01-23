@@ -87,7 +87,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     .description{
         width: 100vw;
         min-height: 75vh;
-
+      
         position: relative;
     }
 
