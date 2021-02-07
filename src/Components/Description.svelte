@@ -8,6 +8,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     export let cards = [];
 
     let descriptionData = cards[0];
+    let IMG_NAME = 'stoppa49_banner'
 
     function updateText(event){
         descriptionData = cards[event.target.id];
@@ -32,13 +33,11 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 </script>
 
 <section class='description' id='about'>
-    <img class="card-image" src="../Images/melanie-hauke-ezsOp-DEjWI-unsplash-300.jpeg" 
-                    srcset="../Images/melanie-hauke-ezsOp-DEjWI-unsplash-300.jpeg 300w, 
-                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-500.jpeg 500w,
-                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-750.jpeg 750w,
-                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-1000.jpeg 1000w,
-                    ../Images/melanie-hauke-ezsOp-DEjWI-unsplash-2000.jpeg 2000w" 
-                    alt="Look into trees from the ground"/>
+    <img class='card-image' src='../Images/srcset/{IMG_NAME}-480w.webp' 
+                   srcset='../Images/srcset/{IMG_NAME}-480w.webp 480w, 
+                    ../Images/srcset/{IMG_NAME}-800w.webp 800w,
+                    ../Images/srcset/{IMG_NAME}-1080w.webp 1080w,'
+                    alt="forest and groundwater with a street inbetween"/>
     <div class='card-wrapper'>
         <div class='card-row'>
             {#each cards as card, i}
@@ -76,9 +75,6 @@ import Modal, { addEventToImages } from "./Modal.svelte"
             </div>
         </div>
     </div>
-    <p>
-        <span>Photo by <a href="https://unsplash.com/@melanie_hnd?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Melanie Hauke</a> on <a href="https://unsplash.com/s/photos/forest?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-    </p>
     <Modal/>
 
 </section>
@@ -87,14 +83,16 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     .description{
         width: 100vw;
         min-height: 75vh;
-      
+        max-height: 100vh;
         position: relative;
     }
 
     .card-wrapper{
-        display: grid;
+        display: flex;
+        flex-direction: column; 
         margin: 5% 10%;
         min-height: 30vh;
+        height: 75vh;
     }
 
     .card {
@@ -140,7 +138,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     .card-content{
         background-color: white;        
         
-        max-height: 75vh;
+        height: 75%;
         padding: 3em;
         overflow-y: scroll;
 
@@ -177,24 +175,14 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         padding-bottom: 30px;
     }
 
-    p span{
-        position: absolute;
-
-        right: 0;
-        bottom: 0;
-
-        margin: 1em;
-        color: white;
-
-        font-size: 10pt;
-    }
-
     .card-image {
         position: absolute;
         z-index: -1;
         overflow: hidden;
         width: 100%;
         height: 100%;
+
+        object-fit: cover;
     }
 
     @media screen and (max-width: 600px) {

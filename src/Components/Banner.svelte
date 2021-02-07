@@ -1,25 +1,38 @@
 <script>
-    export let bannerHeadline = '';
-    export let bannerText = '';
+    import ShowMore from './ShowMore.svelte'
 
-    export let bannerButtonTarget = '';
-    export let bannerButtonText = '';
-
-    // your script goes here
-    function scrollToSection(target){
-        const tragetElement = document.getElementById(target);
-        if (!!tragetElement){
-            tragetElement.scrollIntoView({behavior: "smooth"});
-        }
-    }
 </script>
 
 <section class="banner">
     <div class="banner-text">
-        <h1>{bannerHeadline}</h1>
-        <p>{bannerText}</p>
-    
-        <button on:click={() => scrollToSection(bannerButtonTarget)}>{bannerButtonText}</button>
+        <h1>Stoppt die A49, stoppt den Bau der Autobahn!</h1>
+        <h3>Ein großer Erfolg mit bitterem Beigeschmack:</h3>
+        <p> 
+            Über den Bau der A49 <u>könnte</u> im Deutschen Bundestag tatsächlich erneut abgestimmt werden!!!
+            <br>
+            Unsere Petition <strong>(Pet 1-19-12-9111-040642)*</strong> wurde überraschend direkt vom Petitionsausschuss zur weiteren Überprüfung angenommen und befindet sich somit bereits im "parlamentarischen Verfahren". Es ist deshalb nicht mehr nötig und möglich für unsere Petition auf der offiziellen Seite des Bundestages zu stimmen. 
+            <br>
+            Aber das Verfahren ist nicht öffentlich und wir haben keine Möglichkeit mehr direkt Einfluss zu nehmen (Veröffentlichung / Rede"recht"). 
+        </p>
+        <ShowMore>
+            <p style='text-align: center;'>
+                <strong>Deshalb müssen wir nun andere Wege finden, um auf die Existenz und den Inhalt unsere Petition aufmerksam zu machen: die Öffentlichkeit, die Medien, die Bundestagsabgeordneten.</strong>
+                <br><br>
+                Die A49 steht symptomatisch für das Nicht-Handeln unserer Politiker in Bezug auf Klima- und Artenschutz.
+                <br>
+                Für den Dannenröder Forst gibt es in etwa so viel Hoffnung wie für unsere Erde.
+            </p>
+            <p style='text-align: center;'>
+                Deshalb fordern wir im Wahljahr die Politiker zum sofortigen, konkreten Handeln auf. 
+                <br>
+                Es steht zu viel auf dem Spiel, um die Hoffnung aufzugeben - Arme hochkrempeln und
+                <br>
+                alle zusammen zuerst den Danni retten und "danni" die Welt.
+            </p>
+            <p>
+                <i style='font-size: 6pt;line-height: 6pt;'>* Hintergrund ist, dass "unsere Petition" mit anderen Petitionen zur A49 einer Leitpetition angeschlossen wurde, die nicht öffentlich ist. Deshalb werden wir auf der Seite des Bundestages nie etwas über unsere Petition lesen können noch ist das Verfahren transparent. Wir kennen nur unsere Petitionsnummer (s.o.) mit Sicherheit. Der Name "StoppA49 - Kompromiss: 10km Bundesstraße statt 30 km Autobahn (P2 statt A49)" stammt von uns.</i>
+            </p>
+        </ShowMore>
     </div>
 </section> 
 
@@ -30,7 +43,7 @@
 
         width: 100vw;
         height: min-content;
-        padding: 5% 0 2.5% 0;
+        padding: 4em 0 2.5% 0;
         background-image: linear-gradient(#60b550, #3c9c3c);
         margin: 0;
     }
@@ -47,19 +60,28 @@
         scrollbar-width: none;  /* Firefox */
     }
 
-    .banner-text p{
-        text-align: justify;
+    h1, h3 {
+        margin: 1rem 0;
+    } 
+
+    h3 {
+        text-align: start;
+    }
+
+    .banner-text p {
+        text-align: start;
+        margin: 1em 0;
+    }
+
+    .banner-text i {
+        display: block;
+        font-size: 7pt;
+        line-height: 1.2em;
     }
 
     /* Hide scrollbar for Chrome, Safari and Opera */
     .banner-text::-webkit-scrollbar {
     display: none;
-    }
-    
-    button {
-        font-size: 1.5em;
-        color: white;
-        background-color: transparent;
     }
 
     @media screen and (max-width: 600px) {
