@@ -5,10 +5,19 @@
 	import Contact from './Components/Contact.svelte'
 	import Footer from './Components/Footer.svelte'
 
-	import * as navBarData from '../public/Data/NavBar.json'
-	import * as bannerData from '../public/Data/Banner.json'
-	import * as descriptionData from '../public/Data/Description.json'
-	import * as footerData from '../public/Data/Footer.json'
+
+
+	const navBarData = {
+    navItems : [
+        {target: "about", label: "Unsere Ziele"}, 
+        {target: "contact", label: "Mitmachen"}
+    ]}
+	
+	const footerData = {
+    footerLinks : [
+        {href: './imprint.html', content: 'Impressum', title: 'Impressum'}, 
+        {href: './source.html', content: 'Quellen', title: 'Quellen'}
+    ]}
 
 </script>
 
@@ -16,8 +25,8 @@
 	<NavBar {...navBarData}/>
 
 	<div class='content'>
-		<Banner {...bannerData}/>
-		<Description {...descriptionData}/>
+		<Banner/>
+		<Description/>
 		<Contact/>
 	</div>
 	

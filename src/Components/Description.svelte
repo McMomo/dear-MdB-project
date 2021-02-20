@@ -1,21 +1,56 @@
 <script>
-import { afterUpdate } from "svelte";
-import Collapsible from "./Collapsible.svelte";
-import Table from "./Table.svelte";
-import Modal, { addEventToImages } from "./Modal.svelte"
+import { afterUpdate } from 'svelte';
+import Modal, { addEventToImages } from './Modal.svelte'
+
+import Hintergrund from '../Pages/Hintergrund.svelte'
+import OffenerBrief from '../Pages/OffenerBrief.svelte'
+import Planfall from '../Pages/Planfall.svelte'
+import Petition from '../Pages/Petition.svelte'
+import Brief from '../Pages/Brief.svelte'
+import Vergleich from '../Pages/Vergleich.svelte'
+import Mithelfen from '../Pages/Mithelfen.svelte'
 
 
-    export let cards = [];
+    export let description = [
+        {
+            label: 'Jetzt mithelfen!',
+            content: Mithelfen
+        },
+        {
+            label: 'Persönlicher Brief',
+            content: Brief
+        },
+        {
+            label: 'Planfall 2',
+            content: Planfall
+        },
+        {
+            label: 'Petition',
+            content: Petition
+        },
+        {
+            label: 'Offener Brief',
+            content: OffenerBrief
+        },
+        {
+            label: 'Vergleich A49 & P2',
+            content: Vergleich
+        },
+        {
+            label: 'Hintergründe',
+            content: Hintergrund
+        },
+    ]
 
-    let descriptionData = cards[0];
+    let descriptionData = description[0];
     let IMG_NAME = 'stoppa49_banner'
 
     function updateText(event){
-        descriptionData = cards[event.target.id];
+        descriptionData = description[event.target.id];
     }
 
     function setActive(){
-        let desc = document.getElementsByClassName("description");
+        let desc = document.getElementsByClassName('description');
         let current = desc[0].getElementsByClassName('active');
         current[0].classList.remove('active');
         this.classList.add('active');
@@ -23,7 +58,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 
     function scrollToButton(event){
         if (!!event.target){
-            event.target.scrollIntoView({behavior: "smooth", block: 'nearest', inline: 'start' });
+            event.target.scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'start' });
         }
     }
 
@@ -33,51 +68,25 @@ import Modal, { addEventToImages } from "./Modal.svelte"
 </script>
 
 <section class='description' id='about'>
-    <img class='card-image' src='../Images/srcset/{IMG_NAME}-480w.webp' 
+    <img class='description-background' src='../Images/srcset/{IMG_NAME}-480w.webp' 
                    srcset='../Images/srcset/{IMG_NAME}-480w.webp 480w, 
                     ../Images/srcset/{IMG_NAME}-800w.webp 800w,
                     ../Images/srcset/{IMG_NAME}-1080w.webp 1080w,
                     ../Images/srcset/{IMG_NAME}.svg 1200w'
-                    alt="forest and groundwater with a street inbetween"/>
-    <div class='card-wrapper'>
-        <div class='card-row'>
-            {#each cards as card, i}
-            <button class='card {i === 0? 'active': ''}' id={i} on:click={updateText} on:click={scrollToButton} on:click={setActive}>
-                {card.label}
-            </button>
+                    alt='forest and groundwater with a street inbetween'/>
+    <div class='description-wrapper'>
+        <div class='description-nav'>
+            {#each description as content, i}
+                <button class='navButton {i === 0? 'active': ''}' id={i} on:click={updateText} on:click={scrollToButton} on:click={setActive}>
+                    {content.label}
+                </button>
             {/each}
         </div>
-    
-        <div class='card-content {descriptionData.type ?? ''}'>
-            
-            {#if descriptionData.href}
-            <img src={descriptionData.href} alt={descriptionData.alt}/>
-            {/if}
-            
-            <div>
-                <h2>{descriptionData.headline}</h2>
-                {#if descriptionData.textTop}
-                    <p>
-                        {@html descriptionData.textTop}
-                    </p>
-                {/if}
-                {#if descriptionData.table}
-                    <Table content={descriptionData.table} />
-                {:else if  !!descriptionData.collapsibles}
-                    {#each descriptionData.collapsibles as col}
-                        <Collapsible headline={col.headline} content={col.content} />
-                    {/each}
-                {/if}
-                {#if descriptionData.text}
-                    <p class='{descriptionData.table? "table-text": ""}'>
-                        {@html descriptionData.text}
-                    </p>
-                {/if}
-            </div>
-        </div>
-    </div>
-    <Modal/>
 
+        <svelte:component this={descriptionData.content} />
+    </div>
+
+    <Modal/>
 </section>
 
 <style>
@@ -88,7 +97,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         position: relative;
     }
 
-    .card-wrapper{
+    .description-wrapper{
         display: flex;
         flex-direction: column; 
         margin: 5% 10%;
@@ -96,7 +105,7 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         height: 75vh;
     }
 
-    .card {
+    .navButton {
         margin: auto 10px 0 0;
         height: max-content;
         width: max-content;
@@ -119,12 +128,12 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         color: white;
     }
 
-    .card:hover, .active:hover {
+    .navButton:hover, .active:hover {
         border-color: #979797;
         font-weight: 300;
     }
 
-    .card-row{
+    .description-nav{
         display: flex;
         overflow-x: scroll;
 
@@ -132,51 +141,11 @@ import Modal, { addEventToImages } from "./Modal.svelte"
         -ms-overflow-style: none;  /* IE and Edge */
     }
 
-    .card-row::-webkit-scrollbar {
+    .description-nav::-webkit-scrollbar {
         display: none; /* Chrome and Safari */
     }
 
-    .card-content{
-        background-color: white;        
-        
-        height: 75%;
-        padding: 3em;
-        overflow-y: scroll;
-
-        border: solid 0.3px #979797;
-        border-top: solid 3px #3c9c3c;
-
-        display: grid;
-        place-items: center;
-
-        grid-gap: 1rem;
-        grid-template-columns:  minmax(100px, 15%) 50vw;
-    }
-
-    .card-content img {
-        width: 5em;
-    }
-
-    .card-content h2{
-        text-align: center;
-    }
-
-    .card-content.table{
-        display: block;
-        padding: 2em;
-    }
-
-    .card-content.single{
-        display: block;
-        padding: 3em;
-    }
-
-    .table-text {
-        padding: 10px 5%;
-        padding-bottom: 30px;
-    }
-
-    .card-image {
+    .description-background {
         position: absolute;
         z-index: -1;
         overflow: hidden;
@@ -187,40 +156,9 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     }
 
     @media screen and (max-width: 600px) {
-        /**mobile view for .card-content*/
-        .card-content{
-            grid-template-columns: 100%;
-            padding: 1em;
-        }
-
-        .card-wrapper{
+        /**mobile view for .description-content*/
+        .description-wrapper{
             margin: 5%;
-        }
-
-        .card-content img {
-           opacity: 0.3;
-           z-index: 0;
-           position: absolute;
-           /* justify-content: center; */
-           top: calc(50% - 2.5em);
-           left: calc(50% - 2.5em);
-        }    
-
-        .card-content.table{
-            padding: 0.5em;
-        }
-
-        .card-content.single{
-           padding: 1em;
-        }       
-
-        .table-box {
-            padding: 5px;
-        }
-
-        p span{
-        margin: 0.5em;
-        font-size: 8pt;
         }
     }
 </style>

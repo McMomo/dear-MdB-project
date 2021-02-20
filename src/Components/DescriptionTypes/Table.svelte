@@ -1,25 +1,5 @@
-<script>
-    // your script goes here
-    export let content;
-</script>
-
 <div class='content-table'>
-    {#each content as field, i}
-    <div class="table-box">
-        <p>
-        <strong>{@html field.headline}</strong><br/>
-            {#if field.text}
-                    {@html field.text}
-            {:else if field.list}
-            <ul>
-                {#each field.list as li}
-                        <li>{@html li}</li>
-                {/each}
-            </ul>
-            {/if}
-        </p>
-    </div>
-    {/each}
+    <slot></slot>
 </div>
 
 <style>
@@ -34,7 +14,7 @@
         text-align: left;
     }
 
-    .table-box {
+    .content-table :global(div) {
         background-color: #3c9c3c;
         color: #fff;
         border-radius: 2px;
@@ -43,12 +23,12 @@
         overflow-wrap: break-word;
     }
 
-    .table-box ul {
+    .content-table :global(div ul ) {
         padding-left: 1em;
     }
 
     @media screen and (max-width: 600px) { 
-        .table-box {
+        .content-table :global(div) {
             padding: 5px;
         }
     }

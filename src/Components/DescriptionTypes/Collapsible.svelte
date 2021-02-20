@@ -1,6 +1,4 @@
 <script>
-    // your script goes here
-    export let content;
     export let headline; 
     export let active = false;
 
@@ -26,7 +24,7 @@
 <div class="collapsible">
     <button class="collapsibleButton" class:active on:click={toggleCollapsible} on:click={toggleActive}>{headline}</button>
     <div class="collapsibleContent">
-        {@html content}
+        <slot></slot>
     </div> 
 </div>
 
@@ -43,6 +41,7 @@
     }
 
     .collapsible {
+        width: 100%;
         margin: 1rem 0;
     }
 

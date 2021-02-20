@@ -1,7 +1,8 @@
 <script>
     // your script goes here
     export let navItems = []
-	export let logo = { href:'' ,alt:''}
+	
+    const logo = { href:'./Images/013-tree.svg' ,alt:'#dannibleibt'}
     
     let toggleFlag = true;
 
@@ -29,11 +30,6 @@
             toggleFlag = true;
         }
     }
-    //.crazy:before
-    //https://itnext.io/how-to-build-a-responsive-navbar-using-flexbox-and-javascript-eb0af24f19bf
-    //https://linguinecode.com/post/create-a-navbar-in-svelte
-
-    //https://www.w3schools.com/howto/howto_js_scroll_indicator.asp
 </script>
 
 <header class='menu active' id='menu'>
