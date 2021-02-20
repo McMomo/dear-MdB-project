@@ -30,7 +30,7 @@
                 alle zusammen zuerst den Danni retten und "danni" die Welt.
             </p>
             <p>
-                <i style='font-size: 6pt;line-height: 6pt;'>* Hintergrund ist, dass "unsere Petition" mit anderen Petitionen zur A49 einer Leitpetition angeschlossen wurde, die nicht öffentlich ist. Deshalb werden wir auf der Seite des Bundestages nie etwas über unsere Petition lesen können noch ist das Verfahren transparent. Wir kennen nur unsere Petitionsnummer (s.o.) mit Sicherheit. Der Name "StoppA49 - Kompromiss: 10km Bundesstraße statt 30 km Autobahn (P2 statt A49)" stammt von uns.</i>
+                <i style='font-size: 6pt;line-height: 6pt;'>* Hintergrund ist, dass "unsere Petition" mit anderen Petitionen zur A49 einer Leitpetition angeschlossen wurde, die nicht öffentlich ist. Deshalb werden wir auf der Seite des Bundestages weder etwas über unsere Petition lesen können, noch ist das Verfahren transparent. Wir kennen nur unsere Petitionsnummer (s.o.) mit Sicherheit. Der Name "StoppA49: 10km Bundesstraße statt 30 km Autobahn (P2 statt A49)" stammt von uns.</i>
             </p>
         </ShowMore>
     </div>

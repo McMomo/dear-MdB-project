@@ -36,7 +36,8 @@ import Modal, { addEventToImages } from "./Modal.svelte"
     <img class='card-image' src='../Images/srcset/{IMG_NAME}-480w.webp' 
                    srcset='../Images/srcset/{IMG_NAME}-480w.webp 480w, 
                     ../Images/srcset/{IMG_NAME}-800w.webp 800w,
-                    ../Images/srcset/{IMG_NAME}-1080w.webp 1080w,'
+                    ../Images/srcset/{IMG_NAME}-1080w.webp 1080w,
+                    ../Images/srcset/{IMG_NAME}.svg 1200w'
                     alt="forest and groundwater with a street inbetween"/>
     <div class='card-wrapper'>
         <div class='card-row'>
