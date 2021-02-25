@@ -10,12 +10,12 @@
   <Table>
     <div>
       <h3>Durchbau: A49</h3>
-      <p>(30 km Autobahn von Treysa bis Anschlussstelle A5 zu bauen)</p>
+      <p>30 km Autobahn von Treysa bis Anschlussstelle A5 zu bauen</p>
     </div>
 
     <div>
       <h3>Kompromiss : P2</h3>
-      <p>(9 km Bundesstraße von Treysa bis Stadtallendorf zu bauen)</p>
+      <p>9 km Bundesstraße von Treysa bis kurz vor Stadtallendorf zu bauen</p>
     </div>
     
     <div>
@@ -59,8 +59,9 @@
       <h3>Anbindung in Richtung Kassel (Norden):</h3>
       <ul>
         <li>sehr gut: 13 km 2/3 spurig, der Rest vierspurig und alles ohne Ortsdurchfahrten.</li>
-        <li>Nur knapp 2 km sind neu zu planen (Spange zur B454). Wenn dies nicht möglich ist, kann die Bundesstraße auf der planfestgestellten Trasse bis zum Gewerbegebiet Stadtallendorf durchgebaut werden. → Baurecht für P2 schon jetzt vorhanden!</li>
-      </ul>[
+        <li>Nur knapp 2 km sind neu zu planen (Spange zur B454). Wenn dies nicht möglich ist, kann die Bundesstraße auf der planfestgestellten Trasse bis zum Gewerbegebiet Stadtallendorf durchgebaut werden. 
+        Weitgehendes - notfalls vollständiges - Baurecht ist vorhanden.</li>
+      </ul>
     </div>
     
     <div>

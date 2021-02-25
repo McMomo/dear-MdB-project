@@ -15,14 +15,14 @@
             Aber das Verfahren ist nicht öffentlich und wir haben keine Möglichkeit mehr direkt Einfluss zu nehmen (Veröffentlichung / Rede"recht"). 
         </p>
         <ShowMore>
-            <p style='text-align: center;'>
+            <p>
                 <strong>Deshalb müssen wir nun andere Wege finden, um auf die Existenz und den Inhalt unsere Petition aufmerksam zu machen: die Öffentlichkeit, die Medien, die Bundestagsabgeordneten.</strong>
                 <br><br>
                 Die A49 steht symptomatisch für das Nicht-Handeln unserer Politiker in Bezug auf Klima- und Artenschutz.
                 <br>
                 Für den Dannenröder Forst gibt es in etwa so viel Hoffnung wie für unsere Erde.
             </p>
-            <p style='text-align: center;'>
+            <p>
                 Deshalb fordern wir im Wahljahr die Politiker zum sofortigen, konkreten Handeln auf. 
                 <br>
                 Es steht zu viel auf dem Spiel, um die Hoffnung aufzugeben - Arme hochkrempeln und
@@ -30,7 +30,7 @@
                 alle zusammen zuerst den Danni retten und "danni" die Welt.
             </p>
             <p>
-                <i style='font-size: 6pt;line-height: 6pt;'>* Hintergrund ist, dass "unsere Petition" mit anderen Petitionen zur A49 einer Leitpetition angeschlossen wurde, die nicht öffentlich ist. Deshalb werden wir auf der Seite des Bundestages weder etwas über unsere Petition lesen können, noch ist das Verfahren transparent. Wir kennen nur unsere Petitionsnummer (s.o.) mit Sicherheit. Der Name "StoppA49: 10km Bundesstraße statt 30 km Autobahn (P2 statt A49)" stammt von uns.</i>
+                <i style='font-size: 6pt;line-height: 6pt;'>* Hintergrund ist, dass "unsere Petition" mit anderen Petitionen zur A49 einer Leitpetition angeschlossen wurde, die nicht öffentlich ist. Deshalb werden wir auf der Seite des Bundestages weder etwas über unsere Petition lesen können, noch ist das Verfahren transparent. Wir kennen nur unsere Petitionsnummer (s.o.) mit Sicherheit. Der Name "StoppA49: nur 10km Bundesstraße statt 30 km Autobahn (P2 statt A49)" stammt von uns.</i>
             </p>
         </ShowMore>
     </div>

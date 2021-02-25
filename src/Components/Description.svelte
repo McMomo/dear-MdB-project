@@ -9,6 +9,7 @@ import Petition from '../Pages/Petition.svelte'
 import Brief from '../Pages/Brief.svelte'
 import Vergleich from '../Pages/Vergleich.svelte'
 import Mithelfen from '../Pages/Mithelfen.svelte'
+import Fakten from '../Pages/Fakten.svelte'
 
 
     export let description = [
@@ -17,20 +18,16 @@ import Mithelfen from '../Pages/Mithelfen.svelte'
             content: Mithelfen
         },
         {
-            label: 'Persönlicher Brief',
-            content: Brief
-        },
-        {
-            label: 'Planfall 2',
-            content: Planfall
-        },
-        {
             label: 'Petition',
             content: Petition
         },
         {
-            label: 'Offener Brief',
-            content: OffenerBrief
+            label: 'Fakten zur A49',
+            content: Fakten
+        },
+        {
+            label: 'Planfall 2',
+            content: Planfall
         },
         {
             label: 'Vergleich A49 & P2',
@@ -39,6 +36,10 @@ import Mithelfen from '../Pages/Mithelfen.svelte'
         {
             label: 'Hintergründe',
             content: Hintergrund
+        },
+        {
+            label: 'Offener Brief',
+            content: OffenerBrief
         },
     ]
 
@@ -136,6 +137,8 @@ import Mithelfen from '../Pages/Mithelfen.svelte'
     .description-nav{
         display: flex;
         overflow-x: scroll;
+        overflow-y: hidden;
+        margin-bottom: -1px;
 
         scrollbar-width: none;
         -ms-overflow-style: none;  /* IE and Edge */

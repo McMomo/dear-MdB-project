@@ -1,4 +1,8 @@
-<div class='description-single'>
+<script>
+    export let isLeft = false;
+</script>
+
+<div class:isLeft class='description-single'>
     <slot></slot>
 </div>
 
@@ -21,6 +25,10 @@
 
     .description-single :global(h2){
         text-align: center;
+    }
+
+    .isLeft {
+        place-items: start;
     }
 
     @media screen and (max-width: 600px) {
