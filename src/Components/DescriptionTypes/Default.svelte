@@ -29,7 +29,7 @@
         grid-template-columns:  minmax(100px, 15%) 50vw;
     }
 
-    .description-default :global(img) {
+    .description-default img {
         width: 5em;
     }
 
@@ -44,9 +44,9 @@
             padding: 1em;
         }
 
-        .description-default :global(img) {
+        .description-default img {
            opacity: 0.3;
-           z-index: 0;
+           z-index: -1;
            position: absolute;
            /* justify-content: center; */
            top: calc(50% - 2.5em);
