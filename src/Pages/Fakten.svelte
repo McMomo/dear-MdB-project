@@ -3,45 +3,135 @@
 </script>
 
 <style>
-    table { 
-        border-collapse:collapse; border-spacing:0; empty-cells:show 
+    ul {
+        margin: 0;
+        padding: 0;
     }
-    td, th { vertical-align:top; font-size:12pt;}
-    h1, h2, h3, h4, h5, h6 { clear:both;}
-    ol, ul { margin:0; padding:0;}
-    li { list-style: none; margin:0; padding:0;}
+    li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
     /* "li span.odfLiEnd" - IE 7 issue*/
-    li span { clear: both; line-height:0; width:0; height:0; margin:0; padding:0; }
-    span.footnodeNumber { padding-right:1em; }
-    span.annotation_style_by_filter { font-size:95%;  background-color:#fff000;  margin:0; border:0; padding:0;  }
-    span.heading_numbering { margin-right: 0.8rem; }* { margin:0;}
-    .fr1 { border-style:none; font-size:12pt; margin-bottom:0cm; margin-left:0cm; margin-right:0cm; margin-top:0cm; padding:0cm;  text-align:right; vertical-align:top; writing-mode:horizontal-tb; direction:ltr; background-color:#ffffff; }
-    .Footer { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; }
-    .Footnote { font-size:10pt;  writing-mode:horizontal-tb; direction:ltr; }
-    .P1 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; margin-left:0cm; margin-right:0.635cm; text-indent:0cm; }
-    .P10 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; font-weight:bold; }
-    .P11 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P12 { color:#000000; font-size:12pt; line-height:100%; margin-bottom:0cm; margin-top:0cm;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; font-weight:bold; }
-    .P13 { color:#00000a; font-size:12pt; line-height:100%; margin-bottom:0cm; margin-top:0cm;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; 
+    li span {
+        clear: both;
+        line-height: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    span.footnodeNumber {
+        padding-right: 1em;
+    }
+    .Footnote {
+        font-size: 10pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+    }
+    .P10 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+        font-weight: bold;
+    }
+    .P11 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P12 {
+        color: #000000;
+        font-size: 12pt;
+        line-height: 100%;
+        margin-bottom: 0cm;
+        margin-top: 0cm;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+        font-weight: bold;
+    }
+    .P13 {
+        color: #00000a;
+        font-size: 12pt;
+        line-height: 100%;
+        margin-bottom: 0cm;
+        margin-top: 0cm;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
         text-align: center;
     }
-    .P3 { font-size:10pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P4 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P5 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P6 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P7 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:justify ! important; }
-    .P8 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; font-weight:bold; }
-    .P9 { font-size:12pt;  writing-mode:horizontal-tb; direction:ltr; text-align:center ! important; font-weight:bold; }
-    .Footnote_20_Symbol { vertical-align:super; font-size:58%;}
-    .T2 { font-weight:bold; }
-    .T4 { color:#000000;  font-weight:bold; }
-    .T5 { vertical-align:sub; font-size:58%;}
-    .T6 { font-size:8pt; }
-    .T7 { text-decoration:underline; }
-    .T9 { font-style:italic; }
-    /* ODF styles with no properties representable as CSS */
-    .Page_20_Number .T8 .hgkelc  { }
-    </style>
+    .P3 {
+        font-size: 10pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P4 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P5 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P6 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P7 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: justify !important;
+    }
+    .P8 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        font-weight: bold;
+    }
+    .P9 {
+        font-size: 12pt;
+        writing-mode: horizontal-tb;
+        direction: ltr;
+        text-align: center !important;
+        font-weight: bold;
+    }
+    .Footnote_20_Symbol {
+        vertical-align: super;
+        font-size: 58%;
+    }
+    .T2 {
+        font-weight: bold;
+    }
+    .T4 {
+        color: #000000;
+        font-weight: bold;
+    }
+    .T5 {
+        vertical-align: sub;
+        font-size: 58%;
+    }
+    .T6 {
+        font-size: 8pt;
+    }
+    .T7 {
+        text-decoration: underline;
+    }
+    .T9 {
+        font-style: italic;
+    }
+</style>
 
 <Single isLeft={true}>
 <div class="P13">
