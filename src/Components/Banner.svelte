@@ -8,12 +8,12 @@
         <h1>Stoppt die A49, stoppt den Bau der Autobahn!</h1>
         <div>
             <h3 style="text-align: center;"> Unterstützt jetzt unsere Petition auf Campact, um unseren Forderungen mehr Nachdruck zu verleihen! </h3>
-            <p style="text-align: center;">
+            <p style="text-align: center; font-size: 1.5em;">
                 <a href="https://weact.campact.de/petitions/stopp-a49-nur-10-km-bundesstrasse-statt-30-km-autobahn?share=1fd866bc-aff2-4f61-b439-6802b4459553&source=email-share-button&utm_medium=recommendation&utm_source=email"
                 target="_blank"
                 rel="noopener noreferrer"   
                 >
-                    Hier gehts zur Campact Petition!
+                    <strong style="color: #c0000c;">Hier gehts zur Campact Petition!</strong>
                 </a>
             </p>
         </div>

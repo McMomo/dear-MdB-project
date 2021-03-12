@@ -40,7 +40,7 @@
     <p >Suche dir einen Politiker heraus. Versorge ihn häppchenweise mit Informationen zur A49, indem du ihm z.B. den Link des Videos schickst oder den Link zur Campact-Petition. Du kannst ihm auch Zeitungsartikel zusenden oder Hintergrundinformationen (<a href='https://a-49.de/' >https://a-49.de</a>) oder über einzelne Aktionen z.B. im Danni-Kalender (<a href='https://www.danni-lebt.de/' >https://www.danni-lebt.de/</a>) informieren.</p>
   </Collapsible>
 
-  <Collapsible headline={'Weitere Unterstützer'}>
+  <Collapsible headline={'Unterstützer und Spenden'}>
     <h4>Aktionsgemeinschaft Schutz des Ohmtals</h4>
     <p>Für profundes Faktenwissen zur A49: <a href='https://a-49.de/' >https://a-49.de</a> </p>
     
@@ -52,7 +52,7 @@
       <a href='https://www.danni-lebt.de/' >https://www.danni-lebt.de/</a>
     </p>
     <p>
-      Die Arbeitsgemeinschaft 'Danni for Future' (DFF) dient der Vernetzung aller, die sich mit der Problematik um die A49 beschäftigen und sich einbringen wollen. So können Ideen und Erkenntnisse ausgetauscht werden und konkrete Aktivitäten und Aktionen organisiert werden. Für die Hauptthemen Wasser, FFH, Aktionskalender, Verkehr, Ferrero und 'aktuelle Aufgaben' gibt es eigene Untergruppen. Sowie aktuelle Entwicklungen und die Möglichkeit eine Klage finanziell zu unterstützen. 
+      Die Arbeitsgemeinschaft 'Danni for Future' (DFF) dient der Vernetzung aller, die sich mit der Problematik um die A49 beschäftigen und sich einbringen wollen. So können Ideen und Erkenntnisse ausgetauscht werden und konkrete Aktivitäten und Aktionen organisiert werden. Für die Hauptthemen Wasser, FFH, Aktionskalender, Verkehr, Ferrero und 'aktuelle Aufgaben' gibt es eigene Untergruppen. <strong>Sowie aktuelle Entwicklungen und die Möglichkeit eine Klage finanziell zu unterstützen.</strong>
     </p>
     <p>
       Auf der homepage befindet sich ein Kontaktformular. Konkrete Unterstützung in verschiedenen Bereichen, ob einmalig oder dauerhaft, wird dringend gesucht.
