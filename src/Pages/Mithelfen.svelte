@@ -41,16 +41,21 @@
   </Collapsible>
 
   <Collapsible headline={'Weitere Unterstützer'}>
-    <h4>Weitere Infos:</h4>
+    <h4>Aktionsgemeinschaft Schutz des Ohmtals</h4>
     <p>Für profundes Faktenwissen zur A49: <a href='https://a-49.de/' >https://a-49.de</a> </p>
     
-    <h4>Danni for Future (DFF)</h4>
-    <p >
+    <h4>Dannenröder Appel</h4>
+    <p><a href="https://www.stopp-a49-verkehrswende-jetzt.de/">https://www.stopp-a49-verkehrswende-jetzt.de/</a></p>
+
+    <h4>Danni lebt - Danni for Future (DFF)</h4>
+    <p>
+      <a href='https://www.danni-lebt.de/' >https://www.danni-lebt.de/</a>
+    </p>
+    <p>
       Die Arbeitsgemeinschaft 'Danni for Future' (DFF) dient der Vernetzung aller, die sich mit der Problematik um die A49 beschäftigen und sich einbringen wollen. So können Ideen und Erkenntnisse ausgetauscht werden und konkrete Aktivitäten und Aktionen organisiert werden. Für die Hauptthemen Wasser, FFH, Aktionskalender, Verkehr, Ferrero und 'aktuelle Aufgaben' gibt es eigene Untergruppen. Sowie aktuelle Entwicklungen und die Möglichkeit eine Klage finanziell zu unterstützen. 
     </p>
     <p>
       Auf der homepage befindet sich ein Kontaktformular. Konkrete Unterstützung in verschiedenen Bereichen, ob einmalig oder dauerhaft, wird dringend gesucht.
-      <a href='https://www.danni-lebt.de/' >https://www.danni-lebt.de/</a>
     </p>
   </Collapsible>
 </Single>

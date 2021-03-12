@@ -18,7 +18,6 @@
   }
 
   function toggleText(e){
-    console.log(e.target)
     button_text = button_text == 'mehr'? 'weniger': 'mehr';
     dots = !dots;
     more_text = !more_text;
