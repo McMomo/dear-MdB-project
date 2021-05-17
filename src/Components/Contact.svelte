@@ -4,12 +4,7 @@
 
     const dataSitekey = '6Lcn_twZAAAAAEBbZU0qXRH2TdZLlYFQuzvpG4CU';
 
-    const selectableOptions = [{value: 'brief',label: 'Persönlichen Brief' },
-    {value: 'other', label: 'Anderer Grund'}];
-
     let name = '';
-    let selectedOptions = [];
-    let hometown = '';
     let mail = '';
     let text = '';
 
@@ -18,9 +13,6 @@
             console.error('failed validation')
             return false;
         } else if (!name){
-            console.error('failed validation')
-            return false;
-        } else if (selectedOptions.includes('brief') && !hometown){
             console.error('failed validation')
             return false;
         } else if (!validator.isEmail(mail)){
@@ -63,31 +55,9 @@
 
             {#if name !== ''}
                 <label for='checkboxes'>Hallo, {name}! Warum möchtest du uns kontaktieren?</label>
-                <div id='checkboxes' class="contactCheckbox">
-                    {#each selectableOptions as opt}
-                        <label>
-                            <input type=checkbox bind:group={selectedOptions} name={opt.value} value={opt.value}>
-                            {opt.label}
-                        </label>
-                    {/each}
-                </div>
-
-            {/if}
-
-            {#if selectedOptions.includes('brief')}
-                 <!-- Hier eventuell eine info beim hovern mit kleinem Icon-->
-                 <label for='hometown'>Wo wohnst du? Um den Brief einem MdB zuzuordnen.</label>
-                 <input id='hometown' name='hometown' bind:value={hometown} placeholder='Wahlkreis, Heimatort oder Bundesland.'/>
-            {/if}
-
-            {#if selectedOptions.includes('brief') && hometown !== ''}
-                <label for='mail'>Deine E-Mail-Adresse:</label>
-                <input id='mail' name='mail' bind:value={mail} required type="email"/>
-            {:else if  (selectedOptions.includes('other') || selectedOptions.includes('petition') ) && name !== ''}
                 <label for='mail'>Deine E-Mail-Adresse:</label>
                 <input id='mail' name='mail' bind:value={mail} required='' />
             {/if}
-
             {#if mail !== ''}
                 <label for='text'>Was möchtest du uns sagen oder fragen?</label>
                 <textarea id='text' name='text' bind:value={text}/>
@@ -144,6 +114,7 @@
     label, input, textarea {
         min-width: inherit;
         width: inherit;
+        margin: 5px;
     }
 
     .contactCheckbox {

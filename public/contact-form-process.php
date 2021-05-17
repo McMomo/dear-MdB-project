@@ -1,25 +1,15 @@
 <?php
 
    //Check for subject
-   $possibleReasons = array('brief', 'petition', 'other');
-   $subject = array();
-   foreach ($possibleReasons as $reason){
-       if (isset($_POST[$reason])){
-           array_push($subject,$_POST[$reason]);
-        }
-    }
+   $subject = "Anfrage von Website";
 
     $name = $_POST['name']; // required
     $email_user = $_POST['mail']; // required
     $text = $_POST['text']; // required
 
-    if (in_array('brief', $subject)){
-            $hometown = $_POST['hometown'];
-    }
-
     $email_stoppa49 = "brief@stoppa49.org"; //default mail for all User Kontakt
 
-    $email_subject = "stoppA49 - ".join(" - ", $subject) . " - Anfrage von Website";
+    $email_subject = "StoppA49 - " . $subject;
 
     $email_message = "Es folgen die Nutzereingaben.\n\n";
 
@@ -31,9 +21,6 @@
 
     $email_message .= "Name: " . clean_string($name) . "\n";
     $email_message .= "Email: " . clean_string($email_user) . "\n";
-    if (in_array('brief', $subject)){
-        $email_message .= "Wohnort: " . clean_string($hometown) . "\n";
-    }
     $email_message .= "Nachricht: " . clean_string($text) . "\n";
 
     $response = false;
@@ -120,11 +107,7 @@ img:hover{
                 Danke für dein Interesse. Falls dich keine Bestätigungsmail erreicht schreibe uns doch einfach eine E-Mail an <a href="mailto:brief@stoppa49.org" title="Alternativer Kontakt">brief@stoppa49.org</a> mit deinem Anliegen.
             </h2>
             <p>
-                Wir brauchen auch noch viele weitere Briefschreiber*innen. Am besten aus ganz Deutschland, um einen direkten Bezug zu den Abgeordneten herzustellen.
-                <br/>
-                Kennst du noch weitere potenzielle Unterstützer*innen? Teile unsere Seite mit Ihnen!
-                <br/><br/>
-                Über den Pfeil oben kommst du zurück auf unsere Seite.
+               Über den Pfeil oben kommst du zurück auf unsere Seite.
             </p>
         <?php else : ?>
             <h1>Fehler beim Versenden der E-Mail</h1>

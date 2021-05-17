@@ -5,19 +5,7 @@
 
 <Single>
   <h2>Jetzt mithelfen!</h2>
-  <Collapsible headline={'Persönlicher Brief'}>
-    <h2>Ein persönlicher Brief an alle Abgeordneten des Bundestages.</h2>
-    <p>
-      Um unserer Petition mehr Gewicht zu verleihen, ist es ein weiteres Ziel, allen Abgeordneten des Bundestags einen persönlichen Brief zu schreiben.            Wir werden Briefe an alle 709 Abgeordnete schreiben und brauchen daher mindestens 709 helfende Hände und dafür brauchen wir deine Hilfe.             Durch die individuellen Briefe wollen wir versuchen, an die Menschen hinter den Politiker*innen zu kommen. Was spricht für den Bau der A49? Was dagegen? Was ist mit der Kompromisslösung 'Planfall 2'?              
-    </p>
-    <p>
-      Wenn du uns unterstützen willst, den Bau der A49 zu stoppen, schreib uns über das Kontaktformular und wir melden uns bei dir.             
-    </p>
-    <p>
-      Wir brauchen auch noch viele weitere Briefeschreiber*innen. Am besten aus ganz Deutschland, um einen direkten Bezug zu den Abgeordneten herzustellen.            Kennst du noch welche? Teile unsere Seite mit ihnen!
-    </p>
-  </Collapsible>
-  
+
   <Collapsible headline={'Medien mobilisieren: Spiel über Bande'}>
     <p >Das Wirksamste, um im Wahljahr Öffentlichkeit zu erzeugen sind Presse und Medien:</p><p >Bitten Sie ihre 'Lokalzeitung' bei den Bundestagsabgeordneten aus ihrem Wahlkreis nachzufragen und / oder schicken Sie folgenden Brief 'Spiel über Bande' an namhafte, überregionale Zeitungen und Medien:</p><p >HIER geht es zu einer Vorlage für ein entsprechendes Anschreiben an Presse-/ Medienvertreter*innen: </p><p><a href='./Files/Voralge_Anschreiben.odt' target='_blank' rel='noopener noreferrer'>Vorlage für das Anschreiben</a></p>
   </Collapsible>
@@ -38,6 +26,22 @@
 
     <h4>B) Daily-Danni News</h4>
     <p >Suche dir einen Politiker heraus. Versorge ihn häppchenweise mit Informationen zur A49, indem du ihm z.B. den Link des Videos schickst oder den Link zur Campact-Petition. Du kannst ihm auch Zeitungsartikel zusenden oder Hintergrundinformationen (<a href='https://a-49.de/' >https://a-49.de</a>) oder über einzelne Aktionen z.B. im Danni-Kalender (<a href='https://www.danni-lebt.de/' >https://www.danni-lebt.de/</a>) informieren.</p>
+  </Collapsible>
+
+  <Collapsible headline={'Persönlicher Brief'}>
+    <h2>Ein persönlicher Brief an alle Abgeordneten des Bundestages.</h2>
+    
+    <p><strong>Unsere Briefaktion wurde bereits beendet. Danke für eure Unterstützung!</strong></p>
+
+    <p>
+      Um unserer Petition mehr Gewicht zu verleihen, ist es ein weiteres Ziel, allen Abgeordneten des Bundestags einen persönlichen Brief zu schreiben.            Wir werden Briefe an alle 709 Abgeordnete schreiben und brauchen daher mindestens 709 helfende Hände und dafür brauchen wir deine Hilfe.             Durch die individuellen Briefe wollen wir versuchen, an die Menschen hinter den Politiker*innen zu kommen. Was spricht für den Bau der A49? Was dagegen? Was ist mit der Kompromisslösung 'Planfall 2'?              
+    </p>
+    <p>
+      Wenn du uns unterstützen willst, den Bau der A49 zu stoppen, schreib uns über das Kontaktformular und wir melden uns bei dir.             
+    </p>
+    <p>
+      Wir brauchen auch noch viele weitere Briefeschreiber*innen. Am besten aus ganz Deutschland, um einen direkten Bezug zu den Abgeordneten herzustellen.            Kennst du noch welche? Teile unsere Seite mit ihnen!
+    </p>
   </Collapsible>
 
   <Collapsible headline={'Unterstützer und Spenden'}>
