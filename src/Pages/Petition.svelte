@@ -5,8 +5,17 @@
 
 <Single>
   <h2>Petition und Kompromisslösung</h2>
+
   <p>
-    Mit unserer Petition wollen wir den Bundestag auffordern, der Rodung und dem Bau der A49 Einhalt zu gebieten. Im folgenden Abschnitt findest du unserer Petition, diese liegt dem Petitionsausschuss vor und wird momentan geprüft. Du willst uns mit deiner Unterschrift unterstützen? Dann kannst du dich unten auf der Seite in einen Verteiler eintragen lassen und bekommst Bescheid, wenn die Petition unterzeichnet werden kann.
+    Unsere Petition wurde leider vom Petitionsausschuss abgelehnt.
+    <a href='./Files/ablehnung_petition.pdf' target='_blank' rel='noopener noreferrer'>
+      Die Begründung für die Ablehnung unserer Petition findest du hier.
+    </a>
+	<br/>
+	<br/>
+	<a href='./Files/ausbaustopp_von_autobahnen.pdf' target='_blank' rel='noopener noreferrer'>
+	Weitere Infos zum Ausbaustopp von Autobahnen gibt es hier
+	</a>
   </p>
   <Collapsible headline={'Petition an den deutschen Bundestag'}>
     <h3><strong>Petition an den Deutschen Bundestag</strong></h3>
@@ -406,7 +415,7 @@
   </p>
 </Single>
 
-<style>     
+<style>
   h2,
   h3 {
     clear: both;
@@ -525,5 +534,5 @@
   .T28 {
     color: #000000;
     font-weight: bold;
-  }   
+  }
 </style>

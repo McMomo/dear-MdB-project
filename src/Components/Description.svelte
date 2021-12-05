@@ -6,17 +6,10 @@ import Hintergrund from '../Pages/Hintergrund.svelte'
 import OffenerBrief from '../Pages/OffenerBrief.svelte'
 import Planfall from '../Pages/Planfall.svelte'
 import Petition from '../Pages/Petition.svelte'
-import Brief from '../Pages/Brief.svelte'
 import Vergleich from '../Pages/Vergleich.svelte'
-import Mithelfen from '../Pages/Mithelfen.svelte'
 import Fakten from '../Pages/Fakten.svelte'
 
-
     export let description = [
-        {
-            label: 'Jetzt mithelfen!',
-            content: Mithelfen
-        },
         {
             label: 'Petition',
             content: Petition
@@ -69,8 +62,8 @@ import Fakten from '../Pages/Fakten.svelte'
 </script>
 
 <section class='description' id='about'>
-    <img class='description-background' src='../Images/srcset/{IMG_NAME}-480w.webp' 
-                   srcset='../Images/srcset/{IMG_NAME}-480w.webp 480w, 
+    <img class='description-background' src='../Images/srcset/{IMG_NAME}-480w.webp'
+                   srcset='../Images/srcset/{IMG_NAME}-480w.webp 480w,
                     ../Images/srcset/{IMG_NAME}-800w.webp 800w,
                     ../Images/srcset/{IMG_NAME}-1080w.webp 1080w,
                     ../Images/srcset/{IMG_NAME}.svg 1200w'
@@ -100,7 +93,7 @@ import Fakten from '../Pages/Fakten.svelte'
 
     .description-wrapper{
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
         margin: 5% 10%;
         min-height: 30vh;
         height: 75vh;
@@ -122,7 +115,7 @@ import Fakten from '../Pages/Fakten.svelte'
 
         outline: none;
     }
-    
+
     .active {
         background-color:#3c9c3c;
         border-color:#3c9c3c;
